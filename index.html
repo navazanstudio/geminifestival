@@ -1,0 +1,3670 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gemini Festival — The Gemini Multiverse | Pendaftaran Resmi</title>
+
+  <!-- Google Fonts: Press Start 2P, Silkscreen, VT323, JetBrains Mono & Space Grotesk -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700;800&family=Press+Start+2P&family=Silkscreen:wght@400;700&family=Space+Grotesk:wght@400;500;600;700&family=VT323&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#1e1b4b',
+            inkDark: '#0f172a',
+            googleBlue: '#4285F4',
+            googleRed: '#EA4335',
+            googleYellow: '#FBBC05',
+            googleGreen: '#34A853',
+            warmYellow: '#FBBF24',
+            geminiPurple: '#8B5CF6',
+            geminiPink: '#EC4899',
+          },
+          fontFamily: {
+            pixel: ['"Silkscreen"', 'monospace'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+            sans: ['"Space Grotesk"', 'system-ui', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+
+  <!-- Genuine ISO/IEC 18004 QR Code Generator (jsDelivr primary + cdnjs automatic fallback) + jsPDF -->
+  <script
+    src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"
+    onerror="(function(){var s=document.createElement('script');s.src='https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js';document.head.appendChild(s);})()"
+  ></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <style>
+    /* =====================================================================
+       1. RETRO PIXEL-ART NEO-BRUTALIST DESIGN TOKENS
+    ===================================================================== */
+    :root {
+      --ink: #1e1b4b;
+      --ink-dark: #0f172a;
+      --sky-top: #64b3fb;
+      --sky-mid: #8cc9fc;
+      --sky-bottom: #c3e6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Space Grotesk', system-ui, sans-serif;
+      color: var(--ink);
+      background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-bottom) 88%, #d4eeff 100%);
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    .pixel-art {
+      image-rendering: pixelated;
+      shape-rendering: crispEdges;
+    }
+
+    /* Crisp Neo-Brutalist Surfaces */
+    .neo-card {
+      background: #ffffff;
+      border: 3px solid var(--ink);
+      box-shadow: 6px 6px 0px var(--ink);
+      border-radius: 8px;
+    }
+
+    .neo-badge {
+      border: 2.5px solid var(--ink);
+      box-shadow: 4px 4px 0px var(--ink);
+      border-radius: 5px;
+    }
+
+    .neo-input {
+      border: 2.5px solid var(--ink);
+      background: #ffffff;
+      box-shadow: 3px 3px 0px rgba(30, 27, 75, 0.16);
+      border-radius: 6px;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease, background-color 0.16s ease;
+    }
+
+    .neo-input:hover {
+      background-color: #f8fbff;
+    }
+
+    .neo-input:focus {
+      outline: none;
+      border-color: #4285F4;
+      box-shadow: 4px 4px 0px var(--ink), 0 0 0 3px rgba(66, 133, 244, 0.24);
+      transform: translate(-1px, -1px);
+    }
+
+    .neo-input.input-error {
+      border-color: #EA4335;
+      box-shadow: 4px 4px 0px #EA4335;
+    }
+
+    /* Tactile Neo-Brutalist Buttons */
+    .neo-btn {
+      border: 3px solid var(--ink);
+      box-shadow: 5px 5px 0px var(--ink);
+      border-radius: 6px;
+      transition: transform 0.14s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.14s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.16s ease;
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+    }
+
+    .neo-btn:hover:not(:disabled) {
+      transform: translate(-2px, -2px);
+      box-shadow: 7px 7px 0px var(--ink);
+    }
+
+    .neo-btn:active:not(:disabled) {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0px var(--ink);
+    }
+
+    .neo-btn:disabled {
+      opacity: 0.68;
+      cursor: not-allowed;
+    }
+
+    .neo-btn .btn-arrow {
+      display: inline-block;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .neo-btn:hover:not(:disabled) .btn-arrow {
+      transform: translateX(5px);
+    }
+
+    /* 4-Color Google Segmented Accent Top Bar */
+    .google-top-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: 8px;
+      width: 100%;
+      border-bottom: 2.5px solid var(--ink);
+    }
+
+    /* =====================================================================
+       2. AMBIENT PIXEL WORLD ANIMATIONS (CLOUDS, SPARKLES, GRASS, DINO)
+    ===================================================================== */
+    @keyframes cloudDrift {
+      0% { transform: translate3d(-15vw, 0, 0); }
+      100% { transform: translate3d(115vw, 0, 0); }
+    }
+
+    @keyframes cloudDriftRev {
+      0% { transform: translate3d(112vw, 0, 0); }
+      100% { transform: translate3d(-18vw, 0, 0); }
+    }
+
+    @keyframes floatBob {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      50% { transform: translate3d(0, -8px, 0); }
+    }
+
+    @keyframes sparkleFloat {
+      0%, 100% { transform: translate3d(0, 0, 0) scale(1) rotate(0deg); filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.35)); }
+      50% { transform: translate3d(0, -7px, 0) scale(1.07) rotate(4deg); filter: drop-shadow(0 0 14px rgba(236, 72, 153, 0.55)); }
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.95; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.7); }
+    }
+
+    @keyframes dinoIdle {
+      0%, 82%, 100% { transform: translate3d(0, 0, 0) scaleY(1); }
+      88% { transform: translate3d(0, -8px, 0) scaleY(1.05); }
+      94% { transform: translate3d(0, 0, 0) scaleY(0.95); }
+    }
+
+    @keyframes dinoJump {
+      0% { transform: translate3d(0, 0, 0) rotate(0deg); }
+      35% { transform: translate3d(0, -28px, 0) rotate(-6deg); }
+      65% { transform: translate3d(0, -24px, 0) rotate(5deg); }
+      100% { transform: translate3d(0, 0, 0) rotate(0deg); }
+    }
+
+    .animate-cloud-1 { animation: cloudDrift 60s linear infinite; }
+    .animate-cloud-2 { animation: cloudDrift 76s linear infinite; animation-delay: -28s; }
+    .animate-cloud-3 { animation: cloudDriftRev 66s linear infinite; animation-delay: -18s; }
+    .animate-float-slow { animation: floatBob 4.2s ease-in-out infinite; }
+    .animate-float-alt { animation: floatBob 5.1s ease-in-out infinite; animation-delay: -1.6s; }
+    .animate-sparkle { animation: sparkleFloat 3.6s ease-in-out infinite; }
+    .animate-twinkle { animation: twinkle 2.5s steps(3) infinite; }
+    .animate-dino { animation: dinoIdle 4.4s ease-in-out infinite; }
+    .dino-jumping { animation: dinoJump 0.5s cubic-bezier(0.22, 1, 0.36, 1) !important; }
+
+    .pixel-grass-strip {
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #44A938 0px, #44A938 14px,
+          #52BE44 14px, #52BE44 28px,
+          #3D9A32 28px, #3D9A32 42px
+        );
+      border-top: 4px solid #25681e;
+      box-shadow: inset 0 8px 0 #5CCB4D;
+    }
+
+    @keyframes benefitIn {
+      from { opacity: 0; transform: translate3d(0, 12px, 0); }
+      to { opacity: 1; transform: translate3d(0, 0, 0); }
+    }
+
+    .benefit-item {
+      opacity: 0;
+      animation: benefitIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.18s ease;
+    }
+
+    .benefit-item:hover {
+      transform: translateX(5px);
+    }
+
+    .benefit-item:hover .benefit-num {
+      transform: scale(1.1) rotate(-4deg);
+      box-shadow: 3px 3px 0px var(--ink);
+    }
+
+    .benefit-num {
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+    }
+
+    /* =====================================================================
+       3. REALISTIC 3D LAYERED PRINTER SLOT & 60FPS GPU EXTRUSION
+    ===================================================================== */
+    @keyframes modalBackdropFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes modalStagePop {
+      from { opacity: 0; transform: translate3d(0, 16px, 0) scale(0.97); }
+      to { opacity: 1; transform: translate3d(0, 0, 0) scale(1); }
+    }
+
+    .modal-backdrop-enter {
+      animation: modalBackdropFade 0.25s ease-out forwards;
+    }
+
+    .modal-stage-enter {
+      animation: modalStagePop 0.32s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Subtle Printer Micro-Vibration while feeding paper */
+    @keyframes printerMicroHum {
+      0%, 100% { transform: translate3d(0, 0, 0); }
+      25% { transform: translate3d(0.45px, -0.35px, 0); }
+      50% { transform: translate3d(-0.45px, 0.35px, 0); }
+      75% { transform: translate3d(0.35px, 0.25px, 0); }
+    }
+
+    .printer-humming {
+      animation: printerMicroHum 0.11s linear infinite;
+      will-change: transform;
+    }
+
+    /* Printer Status LEDs */
+    @keyframes ledPulseWarm {
+      0%, 100% { background-color: #38bdf8; box-shadow: 0 0 10px #38bdf8; }
+      50% { background-color: #a855f7; box-shadow: 0 0 12px #a855f7; }
+    }
+
+    @keyframes ledPulsePrint {
+      0%, 100% { background-color: #FBBF24; box-shadow: 0 0 10px #FBBF24; }
+      50% { background-color: #f97316; box-shadow: 0 0 4px #f97316; }
+    }
+
+    .led-warming { animation: ledPulseWarm 0.45s ease-in-out infinite; }
+    .led-printing { animation: ledPulsePrint 0.32s ease-in-out infinite; }
+    .led-ready {
+      background-color: #22c55e;
+      box-shadow: 0 0 12px #22c55e, 0 0 4px #86efac;
+    }
+
+    /* 4-Color LED Chase while printing */
+    @keyframes lampChase {
+      0%, 100% { opacity: 0.3; transform: scale(0.92); filter: brightness(0.8); }
+      45% { opacity: 1; transform: scale(1.12); filter: brightness(1.35) drop-shadow(0 0 5px currentColor); }
+    }
+
+    .printer-printing-lamps .lamp-1 { animation: lampChase 0.64s ease-in-out infinite 0.00s; }
+    .printer-printing-lamps .lamp-2 { animation: lampChase 0.64s ease-in-out infinite 0.16s; }
+    .printer-printing-lamps .lamp-3 { animation: lampChase 0.64s ease-in-out infinite 0.32s; }
+    .printer-printing-lamps .lamp-4 { animation: lampChase 0.64s ease-in-out infinite 0.48s; }
+
+    /* Inner Dark Slot Neon Gemini Light Bar */
+    @keyframes slotNeonFlow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 200% 50%; }
+    }
+
+    .slot-neon-bar {
+      background: linear-gradient(90deg, #4285F4, #8B5CF6, #34A853, #38BDF8, #8B5CF6, #4285F4);
+      background-size: 200% 100%;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .slot-neon-active {
+      opacity: 0.92;
+      animation: slotNeonFlow 1.4s linear infinite;
+    }
+
+    /*
+      3D LAYERED PRINTER SLOT STACK:
+      - Upper Printer Casing & Top Visor Lip: z-30/32 (IN FRONT of emerging ticket)
+      - Ticket Slot Clip Container (#ticket-slot-clip): z-20 (starts inside slot)
+      - Recessed Dark Cavity: z-10 (BEHIND emerging ticket)
+    */
+    .printer-upper-body {
+      position: relative;
+      z-index: 30;
+      background: linear-gradient(180deg, #242b57 0%, #1a1f42 70%, #151936 100%);
+      border: 3px solid var(--ink-dark);
+      border-bottom: none;
+      border-radius: 12px 12px 0 0;
+      box-shadow: inset 0 2px 0 rgba(255, 255, 255, 0.13), 6px 0px 0px rgba(15, 23, 42, 0.92);
+    }
+
+    .printer-slot-assembly {
+      position: relative;
+      background: #151936;
+      border-left: 3px solid var(--ink-dark);
+      border-right: 3px solid var(--ink-dark);
+      border-bottom: 3px solid var(--ink-dark);
+      border-radius: 0 0 10px 10px;
+      box-shadow: 6px 6px 0px rgba(15, 23, 42, 0.92);
+      padding-bottom: 11px;
+    }
+
+    .slot-upper-visor {
+      position: relative;
+      z-index: 32;
+      width: 94%;
+      margin: 0 auto;
+      height: 6px;
+      background: linear-gradient(180deg, #374175 0%, #1d2345 65%, #090d1f 100%);
+      border: 2px solid #090d1f;
+      border-bottom: 2px solid #04060d;
+      border-radius: 3px 3px 0 0;
+      box-shadow: 0 3px 6px rgba(4, 6, 13, 0.72);
+    }
+
+    .slot-cavity {
+      position: relative;
+      z-index: 10;
+      width: 94%;
+      margin: -1px auto 0 auto;
+      height: 18px;
+      background: #04060d;
+      border-left: 2.5px solid #0b0f21;
+      border-right: 2.5px solid #0b0f21;
+      border-bottom: 2px solid #2c3563;
+      border-radius: 0 0 4px 4px;
+      box-shadow: inset 0 6px 10px rgba(0, 0, 0, 0.95), inset 0 -2px 4px rgba(99, 102, 241, 0.18);
+      overflow: hidden;
+    }
+
+    /* Clip-path extrusion container: conceals paper cleanly inside slot while allowing bottom stub drop & shadows */
+    #ticket-slot-clip {
+      position: relative;
+      z-index: 20;
+      margin-top: -21px;
+      padding-bottom: 34px;
+      clip-path: inset(0px -70px -280px -70px);
+    }
+
+    /* Stationary Ambient Occlusion Shadow right underneath upper visor */
+    .slot-stationary-ao {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 86%;
+      height: 22px;
+      z-index: 35;
+      pointer-events: none;
+      background: linear-gradient(
+        to bottom,
+        rgba(4, 6, 13, 0.62) 0%,
+        rgba(4, 6, 13, 0.22) 45%,
+        rgba(4, 6, 13, 0) 100%
+      );
+    }
+
+    /* Pure GPU 60fps Roller Extrusion Keyframes */
+    @keyframes ticketSmoothExtrude {
+      0% { transform: translate3d(0, -102%, 0); }
+      12% { transform: translate3d(0, -88%, 0); }
+      78% { transform: translate3d(0, -7%, 0); }
+      100% { transform: translate3d(0, 0%, 0); }
+    }
+
+    @keyframes ticketSmoothRetract {
+      0% { transform: translate3d(0, 0%, 0); }
+      100% { transform: translate3d(0, -104%, 0); }
+    }
+
+    .ticket-extruder {
+      width: 86%;
+      margin: 0 auto;
+      will-change: transform;
+      transform: translate3d(0, -102%, 0);
+    }
+
+    .ticket-extruder.is-extruding {
+      animation: ticketSmoothExtrude 1.72s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    .ticket-extruder.is-extruded {
+      transform: translate3d(0, 0%, 0);
+    }
+
+    .ticket-extruder.is-retracting {
+      animation: ticketSmoothRetract 0.4s cubic-bezier(0.55, 0, 1, 0.45) forwards;
+    }
+
+    /* Subtle Post-Print Holographic Sheen Sweep */
+    @keyframes holoSweepOnce {
+      0% { transform: translate3d(-130%, 0, 0) skewX(-18deg); opacity: 0; }
+      20% { opacity: 1; }
+      80% { opacity: 0.9; }
+      100% { transform: translate3d(165%, 0, 0) skewX(-18deg); opacity: 0; }
+    }
+
+    .ticket-sheen-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 22;
+      border-radius: 0 0 8px 8px;
+    }
+
+    .ticket-sheen-beam {
+      position: absolute;
+      top: -10%;
+      bottom: -10%;
+      width: 55%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 25%,
+        rgba(255, 255, 255, 0.56) 50%,
+        rgba(139, 92, 246, 0.18) 68%,
+        transparent 100%
+      );
+      opacity: 0;
+      transform: translate3d(-130%, 0, 0) skewX(-18deg);
+      will-change: transform, opacity;
+    }
+
+    .sheen-sweep-active {
+      animation: holoSweepOnce 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* =====================================================================
+       4. COLLECTIBLE E-TICKET ANATOMY & ZERO-STUTTER 60FPS TEAR ENGINE
+    ===================================================================== */
+    #ticket-top {
+      background:
+        radial-gradient(circle at 88% 12%, rgba(139, 92, 246, 0.12) 0%, transparent 45%),
+        radial-gradient(circle at 12% 18%, rgba(66, 133, 244, 0.11) 0%, transparent 48%),
+        radial-gradient(circle at 75% 88%, rgba(251, 191, 36, 0.11) 0%, transparent 44%),
+        #ffffff;
+      border: 3px solid var(--ink);
+      border-top: 0;
+      border-bottom: 0;
+      box-shadow: 6px 6px 0px var(--ink);
+      position: relative;
+      z-index: 6;
+      will-change: transform;
+    }
+
+    /* Tactile 2px Recoil on Upper Ticket when cut completes (pure GPU transform!) */
+    @keyframes topTicketRecoil {
+      0% { transform: translate3d(0, 0, 0); }
+      38% { transform: translate3d(0, -2.5px, 0); }
+      100% { transform: translate3d(0, 0, 0); }
+    }
+
+    .ticket-top-recoil {
+      animation: topTicketRecoil 0.34s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+    }
+
+    /* Perforation Tear Strip — FIXED HEIGHT (never animates height = ZERO layout reflow!) */
+    #ticket-perforation {
+      position: relative;
+      height: 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #ffffff 48%, #f8faff 52%, #f8faff 100%);
+      border-left: 3px solid var(--ink);
+      border-right: 3px solid var(--ink);
+      box-shadow: 6px 6px 0px var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 8;
+      transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .notch-left,
+    .notch-right {
+      position: absolute;
+      top: 50%;
+      width: 22px;
+      height: 22px;
+      border-radius: 9999px;
+      background: #0d132c;
+      border: 3px solid var(--ink);
+      transform: translateY(-50%);
+      z-index: 9;
+      transition: opacity 0.22s ease;
+      will-change: opacity;
+    }
+
+    .notch-left { left: -14px; }
+    .notch-right { right: -14px; }
+
+    .perf-dash-line {
+      width: calc(100% - 30px);
+      border-top: 2.5px dashed #94a3b8;
+      transition: opacity 0.22s ease;
+      will-change: opacity;
+    }
+
+    .perf-label {
+      transition: opacity 0.22s ease;
+      will-change: opacity;
+    }
+
+    /* Crisp Torn-Paper Gap Shadow revealed cleanly via opacity (zero reflow) */
+    .torn-gap-shadow {
+      position: absolute;
+      inset: 0;
+      opacity: 0;
+      pointer-events: none;
+      background: linear-gradient(180deg, rgba(11, 16, 38, 0.42) 0%, rgba(11, 16, 38, 0.08) 55%, transparent 100%);
+      transition: opacity 0.35s ease;
+      will-change: opacity;
+    }
+
+    /* Bottom Check-In Stub — PURE GPU TRANSFORM SEPARATION */
+    #ticket-stub {
+      background: linear-gradient(180deg, #f8faff 0%, #f1f6ff 100%);
+      border: 3px solid var(--ink);
+      border-top: 0;
+      border-radius: 0 0 8px 8px;
+      box-shadow: 6px 6px 0px var(--ink);
+      position: relative;
+      z-index: 5;
+      transform-origin: 18% 0%;
+      transform: translate3d(0, 0, 0) rotate(0deg);
+      will-change: transform, opacity;
+      transition:
+        transform 0.56s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.48s ease,
+        box-shadow 0.48s ease;
+    }
+
+    /* Torn State: Pure GPU separation with springy deceleration (NO height change!) */
+    .ticket-is-torn #ticket-top {
+      border-bottom: 3px dashed var(--ink);
+      border-radius: 0 0 4px 4px;
+    }
+
+    .ticket-is-torn #ticket-perforation {
+      background: transparent;
+      border-left-color: transparent;
+      border-right-color: transparent;
+      box-shadow: none;
+    }
+
+    .ticket-is-torn .notch-left,
+    .ticket-is-torn .notch-right,
+    .ticket-is-torn .perf-dash-line,
+    .ticket-is-torn .perf-label {
+      opacity: 0;
+    }
+
+    .ticket-is-torn .torn-gap-shadow {
+      opacity: 1;
+    }
+
+    .ticket-is-torn #ticket-stub {
+      border-top: 3px dashed var(--ink);
+      border-radius: 4px 4px 8px 8px;
+      transform: translate3d(0, 22px, 0) rotate(-3deg);
+      box-shadow: 9px 14px 0px rgba(15, 23, 42, 0.45);
+    }
+
+    /* Smooth Desktop 3D Tilt Wrapper for Printed Ticket */
+    #ticket-printable {
+      transform-style: preserve-3d;
+      transition: transform 0.18s ease-out;
+    }
+
+    /* Crisp Retro Terminal Box for QR Verification Preview */
+    .qr-payload-box {
+      background: #0f172a;
+      color: #e2e8f0;
+      border: 2px solid var(--ink);
+      box-shadow: 3px 3px 0px var(--ink);
+      border-radius: 6px;
+    }
+
+    /* =====================================================================
+       5. 60FPS RAF CUTTING LAYER (GPU BEAM + SCISSORS + OVERLAY CANVAS SPARKS)
+    ===================================================================== */
+    .cut-fx-layer {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      z-index: 30;
+      overflow: visible;
+    }
+
+    /* GPU-Composited Gemini Multi-Color Cut Beam (uses transform: scaleX) */
+    #cut-laser-trail {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 4px;
+      margin-top: -2px;
+      transform-origin: left center;
+      transform: scaleX(0);
+      opacity: 0;
+      background: linear-gradient(90deg, #4285F4 0%, #8B5CF6 35%, #EC4899 70%, #FBBF24 100%);
+      box-shadow: 0 0 12px rgba(236, 72, 153, 0.9), 0 0 20px rgba(139, 92, 246, 0.65);
+      border-radius: 999px;
+      will-change: transform, opacity;
+    }
+
+    /* GPU-Composited Pixel Scissors (animated via requestAnimationFrame translate3d + rotate) */
+    #scissors-runner {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 34px;
+      height: 34px;
+      margin-top: -17px;
+      margin-left: -17px;
+      opacity: 0;
+      transform: translate3d(-24px, 0, 0) scale(0.85);
+      filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.95)) drop-shadow(2px 2px 0px #1e1b4b);
+      z-index: 38;
+      will-change: transform, opacity;
+    }
+
+    /* Lightweight Spark Canvas aligned directly over perforation line (zero DOM spark creation!) */
+    #cut-sparks-canvas {
+      position: absolute;
+      left: -28px;
+      right: -28px;
+      top: -46px;
+      height: 116px;
+      width: calc(100% + 56px);
+      pointer-events: none;
+      z-index: 35;
+    }
+
+    /* Crisp Retro Rubber Stamp (`✓ PDF TERUNDUH`) on Stub Corner */
+    @keyframes stampSlam {
+      0% { opacity: 0; transform: scale(2.15) rotate(-18deg); }
+      55% { opacity: 1; transform: scale(0.92) rotate(-6deg); }
+      78% { transform: scale(1.04) rotate(-8deg); }
+      100% { opacity: 1; transform: scale(1) rotate(-7deg); }
+    }
+
+    .pdf-stamp {
+      position: absolute;
+      top: -10px;
+      right: 12px;
+      transform: rotate(-7deg);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 28;
+      border: 3px solid #15803d;
+      background: rgba(240, 253, 244, 0.96);
+      color: #15803d;
+      box-shadow: 3px 3px 0px rgba(21, 128, 61, 0.35), inset 0 0 0 1.5px rgba(34, 197, 94, 0.35);
+      padding: 4px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      will-change: transform, opacity;
+    }
+
+    .stamp-visible {
+      animation: stampSlam 0.38s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+    }
+
+    /* Smooth Reveal for Modal Action Bar */
+    .action-bar-hidden {
+      opacity: 0;
+      transform: translate3d(0, 10px, 0);
+      pointer-events: none;
+      transition: opacity 0.36s ease, transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .action-bar-visible {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+      pointer-events: auto;
+      transition: opacity 0.36s ease, transform 0.36s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    /* Retro Pixel Spinner */
+    @keyframes pixelSpin {
+      to { transform: rotate(360deg); }
+    }
+    .pixel-spinner {
+      width: 17px;
+      height: 17px;
+      border: 3px solid rgba(255, 255, 255, 0.35);
+      border-top-color: #ffffff;
+      border-radius: 2px;
+      animation: pixelSpin 0.65s steps(8) infinite;
+    }
+
+    /* Clean Modal Scrollbar */
+    .modal-scroll::-webkit-scrollbar { width: 8px; }
+    .modal-scroll::-webkit-scrollbar-track { background: rgba(11, 16, 38, 0.3); }
+    .modal-scroll::-webkit-scrollbar-thumb {
+      background: #4285F4;
+      border: 2px solid #0f172a;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body class="selection:bg-warmYellow selection:text-ink">
+  <!-- =====================================================================
+       AMBIENT PIXEL SKY, DRIFTING CLOUDS, VOXEL TREES & GRASS GROUND
+  ===================================================================== -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden z-0" aria-hidden="true">
+    <!-- Subtle pixel dot grid -->
+    <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#ffffff 1.5px, transparent 1.5px); background-size: 28px 28px;"></div>
+
+    <!-- Drifting Pixel Clouds -->
+    <svg class="pixel-art animate-cloud-1 absolute top-6 left-0 w-36 sm:w-48 opacity-95" viewBox="0 0 48 20" fill="none">
+      <rect x="12" y="2" width="18" height="6" fill="#FFFFFF" />
+      <rect x="6" y="6" width="32" height="6" fill="#FFFFFF" />
+      <rect x="2" y="10" width="44" height="6" fill="#FFFFFF" />
+      <rect x="6" y="16" width="36" height="2" fill="#DCEEFF" />
+    </svg>
+
+    <svg class="pixel-art animate-cloud-2 absolute top-28 left-0 w-28 sm:w-40 opacity-85" viewBox="0 0 40 16" fill="none">
+      <rect x="10" y="2" width="16" height="4" fill="#FFFFFF" />
+      <rect x="4" y="6" width="30" height="6" fill="#FFFFFF" />
+      <rect x="2" y="10" width="36" height="4" fill="#FFFFFF" />
+    </svg>
+
+    <svg class="pixel-art animate-cloud-3 absolute top-52 left-0 w-32 sm:w-44 opacity-80 hidden sm:block" viewBox="0 0 48 20" fill="none">
+      <rect x="14" y="2" width="16" height="6" fill="#FFFFFF" />
+      <rect x="6" y="8" width="34" height="6" fill="#FFFFFF" />
+      <rect x="2" y="12" width="42" height="5" fill="#FFFFFF" />
+    </svg>
+
+    <!-- Floating Colorful Pixel Cubes -->
+    <div class="animate-float-slow absolute top-16 left-[4%] w-4 h-4 bg-warmYellow border-2 border-ink shadow-[2px_2px_0px_#1e1b4b]"></div>
+    <div class="animate-float-alt absolute top-12 right-[6%] w-4 h-4 bg-googleRed border-2 border-ink shadow-[2px_2px_0px_#1e1b4b]"></div>
+    <div class="animate-float-alt absolute top-44 left-[3%] w-4 h-4 bg-googleBlue border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] hidden md:block"></div>
+    <div class="animate-float-slow absolute top-64 right-[4%] w-4 h-4 bg-geminiPurple border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] hidden md:block"></div>
+    <div class="animate-twinkle absolute top-24 left-[28%] w-2.5 h-2.5 bg-white"></div>
+    <div class="animate-twinkle absolute top-36 right-[26%] w-2.5 h-2.5 bg-white" style="animation-delay: -1.1s;"></div>
+    <div class="animate-float-slow absolute bottom-32 left-[4%] w-4 h-4 bg-geminiPurple border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] hidden lg:block"></div>
+    <div class="animate-float-alt absolute bottom-40 right-[3%] w-4 h-4 bg-googleGreen border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] hidden lg:block"></div>
+
+    <!-- Decorative Voxel Trees -->
+    <svg class="pixel-art absolute bottom-8 -left-4 sm:left-2 w-24 sm:w-32 h-auto opacity-95" viewBox="0 0 32 44" fill="none">
+      <rect x="13" y="26" width="6" height="18" fill="#7C4A27" />
+      <rect x="17" y="26" width="2" height="18" fill="#5D351A" />
+      <rect x="8" y="4" width="16" height="6" fill="#4EB83E" />
+      <rect x="4" y="10" width="24" height="10" fill="#3B9E2E" />
+      <rect x="6" y="20" width="20" height="8" fill="#2E8324" />
+      <rect x="10" y="6" width="6" height="4" fill="#6FD45E" />
+      <rect x="8" y="12" width="4" height="4" fill="#5CCB4D" />
+      <rect x="20" y="14" width="4" height="4" fill="#226B1A" />
+    </svg>
+
+    <svg class="pixel-art absolute bottom-8 -right-4 sm:right-2 w-28 sm:w-36 h-auto opacity-95" viewBox="0 0 40 48" fill="none">
+      <rect x="17" y="28" width="6" height="20" fill="#7C4A27" />
+      <rect x="21" y="28" width="2" height="20" fill="#5D351A" />
+      <rect x="10" y="4" width="20" height="8" fill="#52BE44" />
+      <rect x="4" y="12" width="32" height="10" fill="#3B9E2E" />
+      <rect x="8" y="22" width="24" height="8" fill="#2B7E21" />
+      <rect x="14" y="6" width="8" height="4" fill="#75DC63" />
+      <rect x="8" y="14" width="6" height="4" fill="#5CCB4D" />
+      <rect x="26" y="16" width="6" height="4" fill="#226B1A" />
+      <rect x="6" y="6" width="4" height="4" fill="#FBBF24" />
+    </svg>
+
+    <!-- Pixel Grass Ground Strip -->
+    <div class="pixel-grass-strip absolute bottom-0 left-0 right-0 h-10 sm:h-12">
+      <div class="absolute top-2.5 left-[18%] w-2 h-2 bg-warmYellow"></div>
+      <div class="absolute top-4 left-[36%] w-2 h-2 bg-white"></div>
+      <div class="absolute top-2 left-[62%] w-2 h-2 bg-warmYellow"></div>
+      <div class="absolute top-5 left-[78%] w-2 h-2 bg-pink-300"></div>
+    </div>
+  </div>
+
+  <!-- Interactive Bouncing Pixel Dino Mascot (Bottom-Left) -->
+  <button
+    id="dino-mascot"
+    type="button"
+    title="Klik Dino Gemini!"
+    aria-label="Maskot Dino Gemini Festival"
+    class="fixed bottom-4 left-3 sm:bottom-5 sm:left-6 z-20 cursor-pointer group focus:outline-none"
+  >
+    <span class="hidden sm:block absolute -top-10 left-0 whitespace-nowrap bg-white border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] px-2.5 py-1 rounded text-[10px] font-pixel text-ink opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+      KUOTA TERBATAS! ★
+    </span>
+    <svg id="dino-svg" class="pixel-art animate-dino w-11 h-11 sm:w-14 sm:h-14 drop-shadow-[3px_3px_0px_rgba(30,27,75,0.45)]" viewBox="0 0 20 20" fill="none">
+      <rect x="8" y="1" width="9" height="8" fill="#1e1b4b" />
+      <rect x="6" y="5" width="9" height="9" fill="#1e1b4b" />
+      <rect x="2" y="9" width="6" height="5" fill="#1e1b4b" />
+      <rect x="6" y="14" width="3" height="5" fill="#1e1b4b" />
+      <rect x="11" y="14" width="3" height="5" fill="#1e1b4b" />
+      <rect x="9" y="2" width="7" height="6" fill="#FFFFFF" />
+      <rect x="7" y="6" width="7" height="8" fill="#FFFFFF" />
+      <rect x="3" y="10" width="4" height="3" fill="#FFFFFF" />
+      <rect x="7" y="14" width="1.5" height="4" fill="#FFFFFF" />
+      <rect x="12" y="14" width="1.5" height="4" fill="#FFFFFF" />
+      <rect x="13" y="3" width="2" height="2" fill="#1e1b4b" />
+      <rect x="11" y="9" width="3" height="3" fill="#C7D2FE" />
+    </svg>
+  </button>
+
+  <!-- =====================================================================
+       MAIN PAGE CONTAINER
+  ===================================================================== -->
+  <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-5 sm:pt-8 pb-20 sm:pb-24">
+    <!-- Top Pixel Navigation Header -->
+    <header class="neo-card mb-6 sm:mb-8 overflow-hidden">
+      <div class="google-top-bar">
+        <div class="bg-googleBlue"></div>
+        <div class="bg-googleRed"></div>
+        <div class="bg-googleYellow"></div>
+        <div class="bg-googleGreen"></div>
+      </div>
+      <div class="px-4 sm:px-6 py-3 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 bg-indigo-50 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] rounded flex items-center justify-center shrink-0">
+            <svg class="pixel-art w-6 h-6" viewBox="0 0 16 16" fill="none">
+              <rect x="7" y="1" width="2" height="14" fill="#4285F4" />
+              <rect x="1" y="7" width="14" height="2" fill="#8B5CF6" />
+              <rect x="5" y="5" width="6" height="6" fill="#A855F7" />
+              <rect x="6" y="6" width="4" height="4" fill="#EC4899" />
+              <rect x="7" y="7" width="2" height="2" fill="#FFFFFF" />
+            </svg>
+          </div>
+          <div>
+            <p class="font-pixel text-xs sm:text-sm tracking-wide text-ink leading-tight">
+              GEMINI <span class="text-googleBlue">FESTIVAL</span>
+            </p>
+            <p class="font-mono text-[11px] text-slate-500">OFFICIAL REGISTRATION PORTAL</p>
+          </div>
+        </div>
+
+        <div class="flex items-center gap-2 sm:gap-3">
+          <span id="header-quota-badge" class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 border-2 border-ink rounded text-[11px] font-pixel text-amber-800">
+            <span id="header-quota-dot" class="w-2 h-2 bg-googleRed inline-block animate-pulse"></span>
+            <span id="header-quota-text">KUOTA TERBATAS</span>
+          </span>
+          <a
+            href="#form-pendaftaran"
+            class="neo-btn bg-googleBlue text-white font-pixel text-xs px-3.5 py-2 inline-flex items-center gap-1.5"
+          >
+            DAFTAR <span class="btn-arrow">→</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- RESPONSIVE 2-COLUMN GRID -->
+    <main class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+      <!-- ===============================================================
+           LEFT COLUMN: HERO & EVENT INFO CARD
+      ================================================================ -->
+      <section class="lg:col-span-6 neo-card overflow-hidden">
+        <div class="google-top-bar">
+          <div class="bg-googleBlue"></div>
+          <div class="bg-googleRed"></div>
+          <div class="bg-googleYellow"></div>
+          <div class="bg-googleGreen"></div>
+        </div>
+
+        <div class="p-5 sm:p-7 md:p-8">
+          <!-- Eyebrow Badge + 7 Dimension Pixel Squares -->
+          <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b-2 border-dashed border-slate-200">
+            <span class="font-mono font-bold text-xs sm:text-sm tracking-wider text-ink">
+              GOOGLE STUDENT AMBASSADOR<span class="text-slate-400 mx-1">X</span>HIMAPTIKA
+            </span>
+            <div class="flex items-center gap-1" title="7 Dimensions of Productivity">
+              <span class="w-3 h-3 bg-[#4285F4] border-[1.5px] border-ink inline-block"></span>
+              <span class="w-3 h-3 bg-[#EA4335] border-[1.5px] border-ink inline-block"></span>
+              <span class="w-3 h-3 bg-[#FBBC05] border-[1.5px] border-ink inline-block"></span>
+              <span class="w-3 h-3 bg-[#34A853] border-[1.5px] border-ink inline-block"></span>
+              <span class="w-3 h-3 bg-[#8B5CF6] border-[1.5px] border-ink inline-block"></span>
+              <span class="w-3 h-3 bg-[#F97316] border-[1.5px] border-ink inline-block"></span>
+              <span class="w-3 h-3 bg-[#14B8A6] border-[1.5px] border-ink inline-block"></span>
+            </div>
+          </div>
+
+          <!-- Hero Pixel Title + Animated Gemini Sparkles -->
+          <div class="relative mt-5 mb-5 flex items-start justify-between gap-3">
+            <div class="min-w-0">
+              <h1 class="font-pixel text-[2.1rem] sm:text-5xl leading-[1.06] tracking-tight">
+                <span class="block text-googleBlue drop-shadow-[3px_3px_0px_rgba(30,27,75,0.16)]">Gemini</span>
+                <span class="block text-ink">Festival</span>
+              </h1>
+              <div class="mt-3.5">
+                <p class="font-bold text-googleBlue text-base sm:text-lg leading-snug">
+                  The Gemini Multiverse:
+                </p>
+                <p class="font-bold text-ink text-lg sm:text-xl leading-snug inline-block relative pb-1">
+                  7 Dimensions of Productivity
+                  <span class="block h-[4px] w-full bg-warmYellow mt-1 rounded-sm"></span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Animated Pixel Gemini Sparkle Cluster -->
+            <div class="shrink-0 relative w-20 h-20 sm:w-28 sm:h-28 -mt-1 select-none" aria-hidden="true">
+              <svg class="pixel-art animate-twinkle absolute top-0 left-0 w-5 h-5 sm:w-6 sm:h-6" viewBox="0 0 12 12" fill="none">
+                <rect x="5" y="1" width="2" height="10" fill="#A855F7" />
+                <rect x="1" y="5" width="10" height="2" fill="#EC4899" />
+              </svg>
+              <svg class="pixel-art animate-sparkle absolute top-2 right-1 w-16 h-16 sm:w-22 sm:h-22" viewBox="0 0 24 24" fill="none">
+                <defs>
+                  <linearGradient id="geminiSparkGrad" x1="0" y1="0" x2="24" y2="24" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#4285F4" />
+                    <stop offset="50%" stop-color="#8B5CF6" />
+                    <stop offset="100%" stop-color="#EC4899" />
+                  </linearGradient>
+                </defs>
+                <rect x="11" y="1" width="2" height="22" fill="url(#geminiSparkGrad)" />
+                <rect x="9" y="5" width="6" height="14" fill="url(#geminiSparkGrad)" />
+                <rect x="1" y="11" width="22" height="2" fill="url(#geminiSparkGrad)" />
+                <rect x="5" y="9" width="14" height="6" fill="url(#geminiSparkGrad)" />
+                <rect x="7" y="7" width="10" height="10" fill="url(#geminiSparkGrad)" />
+                <rect x="10" y="10" width="4" height="4" fill="#F5D0FE" opacity="0.65" />
+              </svg>
+              <svg class="pixel-art animate-twinkle absolute bottom-0 right-0 w-5 h-5 sm:w-6 sm:h-6" style="animation-delay: -1.2s;" viewBox="0 0 12 12" fill="none">
+                <rect x="5" y="1" width="2" height="10" fill="#4285F4" />
+                <rect x="1" y="5" width="10" height="2" fill="#8B5CF6" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Date & Time Badges -->
+          <div class="flex flex-wrap items-center gap-3 mt-5">
+            <div class="neo-badge bg-warmYellow px-3.5 py-2 inline-flex items-center gap-2 text-ink">
+              <svg class="pixel-art w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="3" width="12" height="11" stroke="#1e1b4b" stroke-width="2" fill="#FEF3C7" />
+                <rect x="2" y="3" width="12" height="3" fill="#1e1b4b" />
+                <rect x="4" y="1" width="2" height="3" fill="#1e1b4b" />
+                <rect x="10" y="1" width="2" height="3" fill="#1e1b4b" />
+                <rect x="5" y="8" width="2" height="2" fill="#1e1b4b" />
+                <rect x="9" y="8" width="2" height="2" fill="#1e1b4b" />
+                <rect x="5" y="11" width="2" height="2" fill="#1e1b4b" />
+              </svg>
+              <span class="font-mono font-bold text-xs sm:text-sm tracking-tight">MINGGU, 29 NOVEMBER 2026</span>
+            </div>
+
+            <div class="neo-badge bg-white px-3.5 py-2 inline-flex items-center gap-2 text-ink">
+              <svg class="pixel-art w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none">
+                <rect x="2" y="2" width="12" height="12" rx="1" stroke="#1e1b4b" stroke-width="2" fill="#FFFFFF" />
+                <rect x="7" y="4" width="2" height="5" fill="#1e1b4b" />
+                <rect x="7" y="7" width="4" height="2" fill="#1e1b4b" />
+              </svg>
+              <span class="font-mono font-bold text-xs sm:text-sm tracking-tight">07.30 - SELESAI</span>
+            </div>
+          </div>
+
+          <!-- Venue Row -->
+          <div class="mt-4 flex items-center gap-2.5 bg-slate-50 border-2 border-slate-200 rounded-md px-3.5 py-2.5">
+            <svg class="pixel-art w-5 h-5 shrink-0" viewBox="0 0 16 18" fill="none">
+              <rect x="3" y="1" width="10" height="10" fill="#EA4335" stroke="#1e1b4b" stroke-width="2" />
+              <rect x="6" y="4" width="4" height="4" fill="#FFFFFF" />
+              <rect x="5" y="11" width="6" height="3" fill="#EA4335" />
+              <rect x="7" y="14" width="2" height="3" fill="#1e1b4b" />
+            </svg>
+            <p class="font-bold text-sm sm:text-base text-ink">
+              Aula Lantai 4, Gedung FTIK
+            </p>
+          </div>
+
+          <!-- YANG KAMU DAPATKAN (7 Numbered Pixel Items) -->
+          <div class="mt-6">
+            <div class="flex items-center gap-2 mb-3.5">
+              <span class="font-pixel text-xs sm:text-sm tracking-wider text-ink uppercase">YANG KAMU DAPATKAN</span>
+              <span class="flex-1 h-[2px] bg-slate-200"></span>
+            </div>
+
+            <ul class="space-y-2">
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-blue-50/70" style="animation-delay: 0.04s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-googleBlue">1</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">E-Sertifikat untuk seluruh peserta</span>
+              </li>
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-red-50/70" style="animation-delay: 0.10s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-googleRed">2</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">Uang tunai + Sertifikat Juara 1</span>
+              </li>
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-amber-50/70" style="animation-delay: 0.16s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-amber-500">3</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">Kelas Dicoding gratis <span class="inline-block px-1.5 py-0.5 text-xs bg-amber-100 border border-ink rounded font-bold">(senilai 600K)</span></span>
+              </li>
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-emerald-50/70" style="animation-delay: 0.22s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-googleGreen">4</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">Minigift yang menarik</span>
+              </li>
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-sky-50/70" style="animation-delay: 0.28s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-googleBlue">5</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">Konsumsi</span>
+              </li>
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-purple-50/70" style="animation-delay: 0.34s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-geminiPurple">6</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">Pengalaman menyenangkan</span>
+              </li>
+              <li class="benefit-item flex items-center gap-3 p-1.5 rounded-md hover:bg-indigo-50/70" style="animation-delay: 0.40s;">
+                <span class="benefit-num w-8 h-8 shrink-0 bg-white border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] flex items-center justify-center font-pixel text-sm text-ink">7</span>
+                <span class="text-sm sm:text-[15px] font-semibold text-ink">Free biaya registrasi</span>
+              </li>
+            </ul>
+          </div>
+
+          <!-- PROMINENT RETRO QUOTA WARNING BANNER (INFO CARD) -->
+          <div class="mt-6 bg-amber-50 border-[2.5px] border-ink shadow-[4px_4px_0px_#1e1b4b] rounded-md p-3.5 sm:p-4">
+            <div class="flex items-start gap-3">
+              <div class="w-8 h-8 shrink-0 bg-warmYellow border-2 border-ink shadow-[2px_2px_0px_#1e1b4b] rounded flex items-center justify-center font-pixel text-sm text-ink">
+                !
+              </div>
+              <div class="min-w-0">
+                <p class="font-pixel text-[11px] sm:text-xs text-ink tracking-wide leading-snug">
+                  GRATIS BIAYA REGISTRASI • KUOTA TERBATAS
+                </p>
+                <p class="text-xs sm:text-[13px] font-semibold text-slate-700 mt-1 leading-relaxed">
+                  Pendaftaran akan ditutup lebih cepat apabila kuota peserta sudah terpenuhi (full). Amankan kursimu sekarang juga!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===============================================================
+           RIGHT COLUMN: REGISTRATION FORM CARD
+      ================================================================ -->
+      <section id="form-pendaftaran" class="lg:col-span-6 neo-card overflow-hidden scroll-mt-6">
+        <div class="google-top-bar">
+          <div class="bg-googleBlue"></div>
+          <div class="bg-googleRed"></div>
+          <div class="bg-googleYellow"></div>
+          <div class="bg-googleGreen"></div>
+        </div>
+
+        <div class="p-5 sm:p-7 md:p-8">
+          <!-- Form Header with Quick [Isi Demo] Button -->
+          <div class="flex items-start justify-between gap-3 mb-6">
+            <div>
+              <span class="inline-block font-mono text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 bg-blue-50 border-2 border-ink rounded mb-2 text-googleBlue">
+                E-TICKET DISPENSER
+              </span>
+              <h2 class="font-pixel text-xl sm:text-2xl text-ink leading-tight">
+                DAFTAR SEKARANG
+              </h2>
+              <p class="text-xs sm:text-sm text-slate-600 mt-1">
+                Lengkapi data dirimu untuk langsung mencetak E-Tiket &amp; Bukti Pendaftaran Resmi (PDF).
+              </p>
+            </div>
+            <button
+              type="button"
+              id="demo-fill-btn"
+              class="neo-btn bg-warmYellow hover:bg-amber-300 text-ink font-mono font-bold text-[11px] px-2.5 py-1.5 shrink-0"
+              title="Isi data contoh untuk langsung uji animasi mesin cetak & unduh PDF"
+            >
+              [Isi Demo]
+            </button>
+          </div>
+
+          <!-- Registration Form (Exact 6 Fields) -->
+          <form id="registration-form" novalidate class="space-y-4">
+            <!-- 1. Nama Lengkap -->
+            <div>
+              <label for="nama" class="block text-xs sm:text-sm font-bold text-ink mb-1.5">
+                Nama Lengkap <span class="text-googleRed">*</span>
+              </label>
+              <input
+                type="text"
+                id="nama"
+                name="nama"
+                required
+                autocomplete="name"
+                placeholder="Masukkan nama lengkap kamu"
+                class="neo-input w-full px-3.5 py-2.5 text-sm sm:text-[15px] text-ink placeholder:text-slate-400"
+              />
+              <p id="err-nama" class="hidden mt-1 text-xs font-semibold text-googleRed"></p>
+            </div>
+
+            <!-- 2. Email & 3. Nomor WhatsApp (Responsive 1-2 Cols) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="email" class="block text-xs sm:text-sm font-bold text-ink mb-1.5">
+                  Email <span class="text-googleRed">*</span>
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  autocomplete="email"
+                  placeholder="nama@email.com"
+                  class="neo-input w-full px-3.5 py-2.5 text-sm sm:text-[15px] text-ink placeholder:text-slate-400"
+                />
+                <p id="err-email" class="hidden mt-1 text-xs font-semibold text-googleRed"></p>
+              </div>
+
+              <div>
+                <label for="whatsapp" class="block text-xs sm:text-sm font-bold text-ink mb-1.5">
+                  Nomor WhatsApp <span class="text-googleRed">*</span>
+                </label>
+                <input
+                  type="tel"
+                  id="whatsapp"
+                  name="whatsapp"
+                  required
+                  inputmode="numeric"
+                  autocomplete="tel"
+                  placeholder="08xxxxxxxxxx"
+                  class="neo-input w-full px-3.5 py-2.5 text-sm sm:text-[15px] text-ink placeholder:text-slate-400"
+                />
+                <p id="err-whatsapp" class="hidden mt-1 text-xs font-semibold text-googleRed"></p>
+              </div>
+            </div>
+
+            <!-- 4. Jurusan & 5. Semester (Responsive 1-2 Cols) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div>
+                <label for="jurusan" class="block text-xs sm:text-sm font-bold text-ink mb-1.5">
+                  Jurusan <span class="text-googleRed">*</span>
+                </label>
+                <input
+                  type="text"
+                  id="jurusan"
+                  name="jurusan"
+                  required
+                  placeholder="Contoh: Sistem Informasi"
+                  class="neo-input w-full px-3.5 py-2.5 text-sm sm:text-[15px] text-ink placeholder:text-slate-400"
+                />
+                <p id="err-jurusan" class="hidden mt-1 text-xs font-semibold text-googleRed"></p>
+              </div>
+
+              <div>
+                <label for="semester" class="block text-xs sm:text-sm font-bold text-ink mb-1.5">
+                  Semester <span class="text-googleRed">*</span>
+                </label>
+                <div class="relative">
+                  <select
+                    id="semester"
+                    name="semester"
+                    required
+                    class="neo-input w-full appearance-none px-3.5 py-2.5 pr-10 text-sm sm:text-[15px] text-ink cursor-pointer"
+                  >
+                    <option value="" disabled selected>Pilih semester</option>
+                    <option value="Semester 1">Semester 1</option>
+                    <option value="Semester 2">Semester 2</option>
+                    <option value="Semester 3">Semester 3</option>
+                    <option value="Semester 4">Semester 4</option>
+                    <option value="Semester 5">Semester 5</option>
+                    <option value="Semester 6">Semester 6</option>
+                    <option value="Semester 7">Semester 7</option>
+                    <option value="Semester 8">Semester 8</option>
+                    <option value="Semester >8">Semester &gt;8</option>
+                    <option value="Lulus">Lulus</option>
+                    <option value="Umum">Umum</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-ink">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+                      <path stroke-linecap="square" stroke-linejoin="miter" d="M6 9l6 6 6-6" />
+                    </svg>
+                  </div>
+                </div>
+                <p id="err-semester" class="hidden mt-1 text-xs font-semibold text-googleRed"></p>
+              </div>
+            </div>
+
+            <!-- 6. Asal Universitas -->
+            <div>
+              <label for="universitas" class="block text-xs sm:text-sm font-bold text-ink mb-1.5">
+                Asal Universitas <span class="text-googleRed">*</span>
+              </label>
+              <input
+                type="text"
+                id="universitas"
+                name="universitas"
+                required
+                placeholder="Contoh: Universitas Terbuka / UIN Sunan Ampel"
+                class="neo-input w-full px-3.5 py-2.5 text-sm sm:text-[15px] text-ink placeholder:text-slate-400"
+              />
+              <p id="err-universitas" class="hidden mt-1 text-xs font-semibold text-googleRed"></p>
+            </div>
+
+            <!-- PROMINENT QUOTA NOTICE NEAR SUBMIT BUTTON -->
+            <div id="form-quota-banner" class="bg-red-50/90 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] rounded-md px-3.5 py-2.5 flex items-start gap-2.5">
+              <span id="form-quota-dot" class="mt-0.5 w-2.5 h-2.5 rounded-xs bg-googleRed border border-ink shrink-0 animate-pulse"></span>
+              <div class="text-xs leading-snug">
+                <p id="form-quota-title" class="font-pixel text-[10px] sm:text-[11px] text-ink">
+                  GRATIS BIAYA REGISTRASI • KUOTA TERBATAS
+                </p>
+                <p id="form-quota-desc" class="text-slate-700 font-medium mt-0.5">
+                  Pendaftaran akan ditutup lebih cepat apabila kuota peserta sudah terpenuhi (full).
+                </p>
+              </div>
+            </div>
+
+            <!-- Inline Server Error / Duplicate / Full Alert Box -->
+            <div id="form-server-alert" class="hidden bg-red-100 border-2 border-googleRed shadow-[3px_3px_0px_#EA4335] rounded-md px-3.5 py-2.5 text-xs font-bold text-red-950 leading-snug"></div>
+
+            <!-- Bold Neo-Brutalist Submit CTA -->
+            <div class="pt-1">
+              <button
+                type="submit"
+                id="submit-btn"
+                class="neo-btn w-full bg-googleBlue hover:bg-blue-600 text-white font-pixel text-xs sm:text-sm py-3.5 px-5 flex items-center justify-center gap-2.5 tracking-wide"
+              >
+                <span id="submit-btn-text">DAFTAR &amp; CETAK TIKET</span>
+                <span id="submit-btn-arrow" class="btn-arrow text-base leading-none">→</span>
+                <span id="submit-btn-spinner" class="hidden pixel-spinner"></span>
+              </button>
+            </div>
+
+            <p class="flex items-center gap-1.5 text-[11px] sm:text-xs text-slate-500 pt-0.5">
+              <svg class="w-3.5 h-3.5 text-googleGreen shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+              </svg>
+              <span>E-Tiket resmi (PDF + QR Code) otomatis disiapkan untuk dibawa saat check-in acara.</span>
+            </p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- Compact Pixel Footer -->
+    <footer class="mt-8 text-center">
+      <p class="inline-block bg-white/90 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] px-4 py-1.5 rounded text-xs font-mono font-bold text-ink">
+        © 2026 GEMINI FESTIVAL • THE GEMINI MULTIVERSE
+      </p>
+    </footer>
+  </div>
+
+  <!-- =====================================================================
+       ULTRA-SMOOTH PHYSICAL TICKET PRINTER MODAL
+  ===================================================================== -->
+  <div
+    id="ticket-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="ticket-modal-title"
+    class="fixed inset-0 z-50 hidden items-start sm:items-center justify-center bg-[#0b1026]/82 backdrop-blur-md p-3 sm:p-4 overflow-y-auto modal-scroll"
+  >
+    <!-- Subtle Pixel Confetti Celebration Canvas -->
+    <canvas id="confetti-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-[52]"></canvas>
+
+    <!-- Modal Stage Container -->
+    <div id="ticket-modal-stage" class="relative z-[55] w-full max-w-[470px] my-auto py-1 sm:py-2">
+      <!-- Top Control Bar: Success Badge + Replay Print + Close -->
+      <div class="flex items-center justify-between gap-2 mb-2.5 px-0.5">
+        <div class="inline-flex items-center gap-2 bg-white border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] px-2.5 py-1 rounded">
+          <span class="w-4 h-4 bg-googleGreen border border-ink rounded-sm text-white font-pixel text-[10px] flex items-center justify-center leading-none">✓</span>
+          <span id="ticket-modal-title" class="font-pixel text-[10px] sm:text-xs text-ink">PENDAFTARAN BERHASIL!</span>
+        </div>
+
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            id="replay-print-btn"
+            title="Putar ulang animasi cetak tiket dari lubang cetak"
+            class="neo-btn bg-indigo-100 hover:bg-indigo-200 text-ink font-pixel text-[10px] sm:text-[11px] px-2.5 py-1.5 inline-flex items-center gap-1"
+          >
+            <span>↺</span>
+            <span>Cetak Ulang</span>
+          </button>
+
+          <button
+            type="button"
+            id="close-modal-x"
+            aria-label="Tutup modal tiket"
+            class="neo-btn bg-white hover:bg-red-50 text-ink w-8 h-8 flex items-center justify-center font-pixel text-xs"
+          >
+            ✕
+          </button>
+        </div>
+      </div>
+
+      <!-- =============================================================
+           PHYSICAL 3D LAYERED PRINTER HOUSING + RECESSED SLOT
+      ============================================================== -->
+      <div id="printer-housing" class="relative">
+        <div class="printer-upper-body px-4 pt-3 pb-2.5">
+          <div class="flex items-center justify-between gap-2">
+            <div class="flex items-center gap-2.5 min-w-0">
+              <span id="printer-led" class="w-3 h-3 rounded-sm border-2 border-[#090d1f] led-warming shrink-0"></span>
+              <span id="printer-status" class="font-mono font-bold text-[11px] sm:text-xs text-sky-300 tracking-wider truncate">
+                STATUS: WARMING UP...
+              </span>
+            </div>
+
+            <div id="printer-lamps" class="flex items-center gap-1.5 shrink-0">
+              <span class="lamp-1 w-2.5 h-2.5 bg-googleBlue border border-[#090d1f] inline-block text-googleBlue"></span>
+              <span class="lamp-2 w-2.5 h-2.5 bg-googleRed border border-[#090d1f] inline-block text-googleRed"></span>
+              <span class="lamp-3 w-2.5 h-2.5 bg-googleYellow border border-[#090d1f] inline-block text-googleYellow"></span>
+              <span class="lamp-4 w-2.5 h-2.5 bg-googleGreen border border-[#090d1f] inline-block text-googleGreen"></span>
+            </div>
+          </div>
+
+          <div class="mt-2 flex items-center justify-between text-[9px] font-mono text-slate-400/80 select-none">
+            <span>GEMINI-THERMAL PRO // 60FPS FEED</span>
+            <span>SLOT-01</span>
+          </div>
+        </div>
+
+        <div class="printer-slot-assembly">
+          <!-- LAYER 1 (z-32): Top Visor Lip (IN FRONT OF TICKET) -->
+          <div class="slot-upper-visor" aria-hidden="true"></div>
+          <!-- LAYER 2 (z-10): Dark Recessed Slot Cavity (BEHIND TICKET) -->
+          <div class="slot-cavity" aria-hidden="true">
+            <div id="slot-neon-bar" class="slot-neon-bar absolute inset-x-1 top-0.5 h-[4px] rounded-full blur-[1.5px]"></div>
+            <div id="slot-neon-core" class="slot-neon-bar absolute inset-x-3 top-0.5 h-[2px] rounded-full"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =============================================================
+           SEAMLESS CLIP-PATH EXTRUSION STAGE (#ticket-slot-clip, z-20)
+      ============================================================== -->
+      <div id="ticket-slot-clip">
+        <!-- Static Ambient Occlusion Shadow right underneath upper visor lip -->
+        <div class="slot-stationary-ao" aria-hidden="true"></div>
+
+        <!-- GPU-Accelerated Ticket Extruder -->
+        <div id="ticket-extruder" class="ticket-extruder">
+          <div id="ticket-printable" class="relative select-none">
+            <!-- Diagonal Holographic Sheen Sweep -->
+            <div class="ticket-sheen-layer" aria-hidden="true">
+              <div id="ticket-sheen-beam" class="ticket-sheen-beam"></div>
+            </div>
+
+            <!-- ---------------------------------------------------------
+                 PART A: TOP MAIN PASS (#ticket-top)
+            ---------------------------------------------------------- -->
+            <div id="ticket-top" class="overflow-hidden">
+              <div class="grid grid-cols-4 h-[6px] w-full border-b-2 border-ink">
+                <div class="bg-googleBlue"></div>
+                <div class="bg-googleRed"></div>
+                <div class="bg-googleYellow"></div>
+                <div class="bg-googleGreen"></div>
+              </div>
+
+              <div class="px-4 pt-3.5 pb-3.5 sm:px-5 sm:pt-4 sm:pb-4">
+                <!-- Ticket Header Row: Left 2-Line Theme & Compact Right Registration Badge -->
+                <div class="flex items-start justify-between gap-3 pb-2.5 border-b-2 border-dashed border-slate-300/80">
+                  <div class="min-w-0 flex-1">
+                    <div class="inline-flex items-center gap-1.5 bg-indigo-50/90 border border-ink px-2 py-0.5 rounded mb-1">
+                      <span class="w-1.5 h-1.5 bg-googleBlue inline-block"></span>
+                      <span class="font-pixel text-[8.5px] sm:text-[9px] text-ink tracking-wider">OFFICIAL E-TICKET</span>
+                    </div>
+                    <h3 class="font-pixel text-base sm:text-lg leading-tight">
+                      <span class="text-googleBlue">GEMINI</span> <span class="text-ink">FESTIVAL</span>
+                    </h3>
+                    <div class="mt-1">
+                      <p class="text-[11px] font-bold text-googleBlue leading-tight inline-block border-b-2 border-warmYellow pb-0.5">
+                        The Gemini Multiverse:
+                      </p>
+                      <p class="text-[11px] font-bold text-ink leading-tight mt-0.5">
+                        7 Dimensions of Productivity
+                      </p>
+                    </div>
+                  </div>
+
+                  <div class="text-right shrink-0 flex flex-col items-end gap-1 pt-0.5">
+                    <div class="flex items-center gap-0.5" aria-hidden="true">
+                      <span class="w-2 h-2 bg-[#4285F4] border border-ink inline-block"></span>
+                      <span class="w-2 h-2 bg-[#EA4335] border border-ink inline-block"></span>
+                      <span class="w-2 h-2 bg-[#FBBC05] border border-ink inline-block"></span>
+                      <span class="w-2 h-2 bg-[#34A853] border border-ink inline-block"></span>
+                      <span class="w-2 h-2 bg-[#8B5CF6] border border-ink inline-block"></span>
+                      <span class="w-2 h-2 bg-[#F97316] border border-ink inline-block"></span>
+                      <span class="w-2 h-2 bg-[#14B8A6] border border-ink inline-block"></span>
+                    </div>
+                    <svg class="pixel-art w-6 h-6 animate-sparkle" viewBox="0 0 24 24" fill="none">
+                      <rect x="11" y="2" width="2" height="20" fill="#8B5CF6" />
+                      <rect x="2" y="11" width="20" height="2" fill="#4285F4" />
+                      <rect x="8" y="8" width="8" height="8" fill="#A855F7" />
+                      <rect x="10" y="10" width="4" height="4" fill="#EC4899" />
+                    </svg>
+                    <span id="t-id-main" class="font-mono font-extrabold text-[10px] px-1.5 py-0.5 bg-warmYellow border-[1.5px] border-ink rounded text-ink shadow-[2px_2px_0px_#1e1b4b] leading-none">
+                      GF26-0000
+                    </span>
+                  </div>
+                </div>
+
+                <!-- Participant Info Grid -->
+                <div class="mt-2.5 space-y-2">
+                  <div class="bg-white/90 border-[1.5px] border-slate-300 rounded px-2.5 py-1.5">
+                    <p class="font-mono text-[9px] uppercase tracking-wider text-slate-400">NAMA PESERTA</p>
+                    <p id="t-nama" class="font-bold text-sm sm:text-base text-ink leading-snug break-words">—</p>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                    <div class="bg-white/90 border border-slate-200 rounded px-2.5 py-1.5">
+                      <p class="font-mono text-[9px] uppercase text-slate-400">EMAIL</p>
+                      <p id="t-email" class="font-semibold text-[11px] text-ink truncate">—</p>
+                    </div>
+                    <div class="bg-white/90 border border-slate-200 rounded px-2.5 py-1.5">
+                      <p class="font-mono text-[9px] uppercase text-slate-400">WHATSAPP</p>
+                      <p id="t-whatsapp" class="font-mono font-bold text-[11px] text-ink truncate">—</p>
+                    </div>
+                  </div>
+
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                    <div class="bg-white/90 border border-slate-200 rounded px-2.5 py-1.5">
+                      <p class="font-mono text-[9px] uppercase text-slate-400">JURUSAN &amp; SEMESTER</p>
+                      <p id="t-jurusan-sem" class="font-semibold text-[11px] text-ink leading-tight break-words">—</p>
+                    </div>
+                    <div class="bg-white/90 border border-slate-200 rounded px-2.5 py-1.5">
+                      <p class="font-mono text-[9px] uppercase text-slate-400">ASAL UNIVERSITAS</p>
+                      <p id="t-univ" class="font-semibold text-[11px] text-ink leading-tight break-words">—</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Event Schedule & Venue Strip -->
+                <div class="mt-2.5 grid grid-cols-3 gap-1.5 bg-[#edf4ff] border-2 border-ink rounded-md px-2.5 py-2">
+                  <div>
+                    <p class="font-mono text-[8.5px] font-bold text-slate-500 uppercase">TANGGAL</p>
+                    <p class="font-pixel text-[10px] text-ink mt-0.5">29 NOV 2026</p>
+                  </div>
+                  <div>
+                    <p class="font-mono text-[8.5px] font-bold text-slate-500 uppercase">WAKTU</p>
+                    <p class="font-pixel text-[10px] text-ink mt-0.5">07.30 WIB</p>
+                  </div>
+                  <div>
+                    <p class="font-mono text-[8.5px] font-bold text-slate-500 uppercase">LOKASI</p>
+                    <p class="font-bold text-[10px] text-ink leading-tight mt-0.5">Aula Lt. 4, FTIK</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- ---------------------------------------------------------
+                 PART B: PERFORATION LINE + 60FPS RAF SCISSORS & SPARKS CANVAS
+            ---------------------------------------------------------- -->
+            <div id="ticket-perforation">
+              <div class="torn-gap-shadow" aria-hidden="true"></div>
+              <div class="notch-left"></div>
+              <div class="perf-dash-line"></div>
+              <span class="perf-label absolute bg-white px-2 font-mono text-[8.5px] font-bold tracking-widest text-slate-400">
+                ✂ POTONG DI SINI
+              </span>
+              <div class="notch-right"></div>
+
+              <!-- 60fps Pure GPU Cutting Layer (zero DOM churn!) -->
+              <div id="cut-fx-layer" class="cut-fx-layer">
+                <canvas id="cut-sparks-canvas" aria-hidden="true"></canvas>
+                <div id="cut-laser-trail"></div>
+                <div id="scissors-runner" aria-hidden="true">
+                  <svg class="pixel-art w-full h-full" viewBox="0 0 24 24" fill="none">
+                    <rect x="2" y="4" width="6" height="6" fill="#FBBF24" stroke="#1e1b4b" stroke-width="2" />
+                    <rect x="4" y="6" width="2" height="2" fill="#1e1b4b" />
+                    <rect x="2" y="14" width="6" height="6" fill="#FBBF24" stroke="#1e1b4b" stroke-width="2" />
+                    <rect x="4" y="16" width="2" height="2" fill="#1e1b4b" />
+                    <rect x="8" y="10" width="4" height="4" fill="#EC4899" stroke="#1e1b4b" stroke-width="1.5" />
+                    <path d="M11 10 L22 5 L22 9 L12 13 Z" fill="#E2E8F0" stroke="#1e1b4b" stroke-width="1.8" />
+                    <path d="M11 14 L22 19 L22 15 L12 11 Z" fill="#FFFFFF" stroke="#1e1b4b" stroke-width="1.8" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- ---------------------------------------------------------
+                 PART C: DETACHABLE BOTTOM CHECK-IN STUB (#ticket-stub)
+            ---------------------------------------------------------- -->
+            <div id="ticket-stub" class="px-4 py-3.5 sm:px-5 sm:py-4">
+              <!-- Retro Pixel Stamp on Stub Corner -->
+              <div id="pdf-stamp-badge" class="pdf-stamp font-pixel text-[10px] sm:text-xs tracking-wider">
+                ✓ PDF TERUNDUH
+              </div>
+
+              <div class="flex items-start justify-between gap-3">
+                <div class="min-w-0 flex-1">
+                  <div class="flex flex-wrap items-center gap-1.5 mb-1.5">
+                    <span class="font-pixel text-[8.5px] px-1.5 py-0.5 bg-ink text-white rounded-sm">BUKTI PENDAFTARAN RESMI</span>
+                    <span class="font-mono font-bold text-[9px] px-1.5 py-0.5 bg-emerald-100 text-emerald-800 border border-ink rounded-sm">FREE PASS</span>
+                  </div>
+
+                  <p id="t-id-stub" class="font-mono font-bold text-xs sm:text-sm text-ink tracking-wider leading-tight">
+                    GF26-0000
+                  </p>
+
+                  <!-- Real ISO/IEC 15417 Code 128B Linear Barcode Canvas -->
+                  <div class="mt-1.5 inline-block bg-white border border-slate-300 rounded px-1 py-0.5 max-w-full">
+                    <canvas id="ticket-barcode-canvas" width="220" height="32" class="pixel-art block max-w-full h-[24px] w-auto"></canvas>
+                  </div>
+
+                  <p class="text-[10px] text-slate-600 mt-1.5 leading-snug">
+                    Tunjukkan E-Tiket PDF ini saat registrasi ulang di Aula Lantai 4, Gedung FTIK.
+                  </p>
+                </div>
+
+                <!-- Real ISO/IEC 18004 Scannable QR Code + Interactive Payload Inspector -->
+                <div class="shrink-0 flex flex-col items-center">
+                  <div class="bg-white p-1 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] rounded">
+                    <canvas id="ticket-qr-canvas" width="240" height="240" class="pixel-art block w-[84px] h-[84px] sm:w-[94px] sm:h-[94px]"></canvas>
+                  </div>
+                  <button
+                    type="button"
+                    id="toggle-qr-payload-btn"
+                    class="mt-1.5 w-full bg-indigo-50 hover:bg-indigo-100 active:translate-y-px border-[1.5px] border-ink shadow-[2px_2px_0px_#1e1b4b] rounded px-1.5 py-0.5 font-mono font-bold text-[9px] text-ink transition-colors cursor-pointer"
+                  >
+                    🔍 Cek Isi QR
+                  </button>
+                </div>
+              </div>
+
+              <!-- Collapsible Inline Verified QR Payload Preview -->
+              <div id="qr-payload-panel" class="hidden mt-3 qr-payload-box p-2.5 text-left select-text">
+                <div class="flex items-center justify-between gap-2 pb-1.5 mb-1.5 border-b border-slate-700">
+                  <span class="font-pixel text-[8.5px] text-emerald-400">✓ ISI DATA QR TERVERIFIKASI</span>
+                  <span class="font-mono text-[8.5px] text-slate-400">ISO/IEC 18004</span>
+                </div>
+                <pre id="qr-payload-text" class="font-mono text-[9.5px] sm:text-[10px] leading-relaxed text-slate-100 whitespace-pre-wrap break-words m-0"></pre>
+              </div>
+
+              <!-- WhatsApp Group Participant Box inside E-Ticket Stub -->
+              <div class="mt-3 bg-emerald-50 border-2 border-ink shadow-[3px_3px_0px_#1e1b4b] rounded-md p-2.5">
+                <div class="flex items-center justify-between gap-2">
+                  <div class="min-w-0">
+                    <p class="font-pixel text-[9px] text-emerald-800 tracking-wide leading-tight">
+                      💬 GRUP WHATSAPP PESERTA (WAJIB)
+                    </p>
+                    <p class="text-[10px] text-slate-700 font-medium mt-0.5 leading-snug">
+                      Gabung grup untuk rundown &amp; info teknis hari H acara.
+                    </p>
+                  </div>
+                  <div class="shrink-0 flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      id="copy-wa-link-btn"
+                      title="Salin tautan grup WhatsApp"
+                      class="bg-white hover:bg-slate-100 active:translate-y-px border-[1.5px] border-ink shadow-[2px_2px_0px_#1e1b4b] rounded px-2 py-1 font-mono font-bold text-[9px] text-ink cursor-pointer"
+                    >
+                      Salin
+                    </button>
+                    <a
+                      id="ticket-wa-link"
+                      href="https://chat.whatsapp.com/JhQGqzx9CQ7EE3RFT0J8mP?s=cl&p=a&iam=2"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="bg-googleGreen hover:bg-emerald-600 active:translate-y-px border-[1.5px] border-ink shadow-[2px_2px_0px_#1e1b4b] rounded px-2.5 py-1 font-pixel text-[9px] text-white whitespace-nowrap no-underline"
+                    >
+                      GABUNG →
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =============================================================
+           MODAL ACTION BAR (Primary Download + Guaranteed Direct PDF Link + WA Group)
+      ============================================================== -->
+      <div id="modal-action-bar" class="action-bar-hidden relative z-30 -mt-2 space-y-2">
+        <!-- Row 1: Before Cut (Download CTA) OR After Cut (Direct Anchor Link + Reset) -->
+        <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          <!-- Primary Trigger Button (runs smooth 60fps cut & auto-downloads pre-built PDF) -->
+          <button
+            type="button"
+            id="download-pdf-btn"
+            class="neo-btn flex-1 bg-warmYellow hover:bg-amber-300 text-ink font-pixel text-xs py-3 px-4 flex items-center justify-center gap-2"
+          >
+            <svg class="pixel-art w-4 h-4 shrink-0" viewBox="0 0 16 16" fill="none">
+              <rect x="7" y="1" width="2" height="8" fill="#1e1b4b" />
+              <rect x="4" y="6" width="8" height="2" fill="#1e1b4b" />
+              <rect x="5" y="8" width="6" height="2" fill="#1e1b4b" />
+              <rect x="7" y="10" width="2" height="1" fill="#1e1b4b" />
+              <rect x="2" y="12" width="12" height="3" fill="#1e1b4b" />
+            </svg>
+            <span id="download-pdf-label">DOWNLOAD TIKET PDF</span>
+          </button>
+
+          <!-- Real Direct Anchor Download Link (revealed right after cut for 100% WebView/Mobile fallback) -->
+          <a
+            id="direct-download-link"
+            href="#"
+            download="Tiket-Gemini-Festival.pdf"
+            class="hidden neo-btn flex-1 bg-emerald-400 hover:bg-emerald-300 text-ink font-pixel text-xs py-3 px-4 items-center justify-center gap-2 text-center"
+          >
+            <span>⬇ UNDUH LAGI PDF</span>
+          </a>
+
+          <!-- Reset & Replay Button -->
+          <button
+            type="button"
+            id="reset-cut-btn"
+            class="hidden neo-btn bg-warmYellow hover:bg-amber-300 text-ink font-pixel text-[11px] py-3 px-3.5 items-center justify-center gap-1.5"
+          >
+            <span>↺</span>
+            <span>Reset &amp; Cetak Ulang</span>
+          </button>
+
+          <!-- Register Another Participant -->
+          <button
+            type="button"
+            id="register-another-btn"
+            class="neo-btn bg-white hover:bg-slate-100 text-ink font-pixel text-[11px] py-3 px-3.5 flex items-center justify-center"
+          >
+            DAFTAR LAIN
+          </button>
+        </div>
+
+        <!-- Row 2: Prominent WhatsApp Group CTA -->
+        <a
+          id="modal-wa-group-btn"
+          href="https://chat.whatsapp.com/JhQGqzx9CQ7EE3RFT0J8mP?s=cl&p=a&iam=2"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="neo-btn w-full bg-[#22C55E] hover:bg-emerald-500 text-white font-pixel text-[11px] sm:text-xs py-2.5 px-4 flex items-center justify-center gap-2 text-center"
+        >
+          <span>💬 GABUNG GRUP WHATSAPP PESERTA</span>
+          <span class="btn-arrow">→</span>
+        </a>
+
+        <!-- Database / Email Sync & PDF Readiness Hints -->
+        <div class="space-y-0.5 text-center">
+          <p id="email-sent-hint" class="hidden font-mono text-[10px] text-emerald-300 font-bold"></p>
+          <p id="pdf-ready-hint" class="font-mono text-[10px] text-indigo-200/90">
+            E-Tiket PDF resmi sedang disiapkan di memori...
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Non-blocking Pixel Toast Container (Never uses alert()) -->
+  <div
+    id="toast-container"
+    aria-live="polite"
+    class="fixed top-4 right-4 z-[80] flex flex-col gap-2 max-w-[90vw] sm:max-w-sm pointer-events-none"
+  ></div>
+
+  <!-- =====================================================================
+       APPLICATION JAVASCRIPT
+       - 60FPS rAF Ticket Cutting & Canvas Sparks (Zero html2canvas Stutter)
+       - High-Res 1000x1540 Offscreen Canvas Official E-Ticket Renderer
+       - Bulletproof jsPDF + Built-In Pure-JS PDF 1.4 Binary Encoder Fallback
+  ===================================================================== -->
+  <script>
+    (function () {
+      'use strict';
+
+      /* ===================================================================
+         1. GOOGLE APPS SCRIPT / GOOGLE SHEETS INTEGRATION (LIVE CONNECTED)
+      =================================================================== */
+      const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUWkLLprtQ-StF9g7uMRhOnlu4jDdfF69-ubue50E70Q-F7la-oLdQ_utCPRdAuglK/exec';
+      const DEFAULT_WA_GROUP_LINK = 'https://chat.whatsapp.com/JhQGqzx9CQ7EE3RFT0J8mP?s=cl&p=a&iam=2';
+
+      /**
+       * Mengambil status kuota peserta secara real-time dari Spreadsheet via doGet.
+       */
+      async function fetchQuotaStatus() {
+        if (!APPS_SCRIPT_URL) return null;
+        try {
+          const response = await fetch(`${APPS_SCRIPT_URL}?action=status&t=${Date.now()}`, {
+            method: 'GET',
+            redirect: 'follow',
+          });
+          if (!response.ok) return null;
+          const json = await response.json();
+          if (json && json.status === 'ok' && json.quota) {
+            applyQuotaUI(json.quota);
+            return json.quota;
+          }
+        } catch (err) {
+          console.warn('Tidak dapat memuat info kuota live:', err);
+        }
+        return null;
+      }
+
+      /**
+       * Mengirim data pendaftaran ke Google Apps Script (Spreadsheet + Auto Email).
+       * Menggunakan Content-Type text/plain agar bebas CORS preflight OPTIONS,
+       * sehingga respons JSON (success / duplicate / full / error) bisa dibaca utuh!
+       */
+      async function sendRegistrationData(participant) {
+        if (!APPS_SCRIPT_URL) {
+          await sleep(420);
+          return {
+            status: 'success',
+            mode: 'ui-preview',
+            emailSent: false,
+            data: {
+              kodePendaftaran: participant.ticketId,
+              waGroupLink: DEFAULT_WA_GROUP_LINK,
+            },
+          };
+        }
+
+        const requestBody = {
+          kodePendaftaran: participant.ticketId,
+          ticketCode: participant.ticketId,
+          nama: participant.nama,
+          email: participant.email,
+          whatsapp: participant.whatsapp,
+          jurusan: participant.jurusan,
+          semester: participant.semester,
+          universitas: participant.universitas,
+        };
+
+        const response = await fetch(APPS_SCRIPT_URL, {
+          method: 'POST',
+          redirect: 'follow',
+          headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+          },
+          body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+          throw new Error(`Server merespons status HTTP ${response.status}.`);
+        }
+
+        const rawText = await response.text();
+        let json;
+        try {
+          json = JSON.parse(rawText);
+        } catch (_) {
+          throw new Error('Respons server tidak valid. Pastikan Web App Apps Script sudah di-deploy sebagai "Anyone".');
+        }
+
+        return json;
+      }
+
+      /* ===================================================================
+         2. DOM REFERENCES & RUNTIME STATE
+      =================================================================== */
+      const form = document.getElementById('registration-form');
+      const submitBtn = document.getElementById('submit-btn');
+      const submitBtnText = document.getElementById('submit-btn-text');
+      const submitBtnArrow = document.getElementById('submit-btn-arrow');
+      const submitBtnSpinner = document.getElementById('submit-btn-spinner');
+      const demoFillBtn = document.getElementById('demo-fill-btn');
+      const formServerAlert = document.getElementById('form-server-alert');
+
+      const headerQuotaBadge = document.getElementById('header-quota-badge');
+      const headerQuotaDot = document.getElementById('header-quota-dot');
+      const headerQuotaText = document.getElementById('header-quota-text');
+      const formQuotaBanner = document.getElementById('form-quota-banner');
+      const formQuotaDot = document.getElementById('form-quota-dot');
+      const formQuotaTitle = document.getElementById('form-quota-title');
+      const formQuotaDesc = document.getElementById('form-quota-desc');
+
+      const modal = document.getElementById('ticket-modal');
+      const modalStage = document.getElementById('ticket-modal-stage');
+      const closeModalX = document.getElementById('close-modal-x');
+      const replayPrintBtn = document.getElementById('replay-print-btn');
+      const registerAnotherBtn = document.getElementById('register-another-btn');
+
+      const printerHousing = document.getElementById('printer-housing');
+      const printerLed = document.getElementById('printer-led');
+      const printerStatus = document.getElementById('printer-status');
+      const printerLamps = document.getElementById('printer-lamps');
+      const slotNeonBar = document.getElementById('slot-neon-bar');
+      const slotNeonCore = document.getElementById('slot-neon-core');
+
+      const ticketExtruder = document.getElementById('ticket-extruder');
+      const ticketPrintable = document.getElementById('ticket-printable');
+      const ticketTop = document.getElementById('ticket-top');
+      const ticketPerforation = document.getElementById('ticket-perforation');
+      const ticketSheenBeam = document.getElementById('ticket-sheen-beam');
+
+      const cutLaserTrail = document.getElementById('cut-laser-trail');
+      const scissorsRunner = document.getElementById('scissors-runner');
+      const cutSparksCanvas = document.getElementById('cut-sparks-canvas');
+      const pdfStampBadge = document.getElementById('pdf-stamp-badge');
+      const qrCanvas = document.getElementById('ticket-qr-canvas');
+      const barcodeCanvas = document.getElementById('ticket-barcode-canvas');
+      const toggleQrPayloadBtn = document.getElementById('toggle-qr-payload-btn');
+      const qrPayloadPanel = document.getElementById('qr-payload-panel');
+      const qrPayloadText = document.getElementById('qr-payload-text');
+
+      const modalActionBar = document.getElementById('modal-action-bar');
+      const downloadPdfBtn = document.getElementById('download-pdf-btn');
+      const downloadPdfLabel = document.getElementById('download-pdf-label');
+      const directDownloadLink = document.getElementById('direct-download-link');
+      const resetCutBtn = document.getElementById('reset-cut-btn');
+      const pdfReadyHint = document.getElementById('pdf-ready-hint');
+      const emailSentHint = document.getElementById('email-sent-hint');
+      const ticketWaLink = document.getElementById('ticket-wa-link');
+      const modalWaGroupBtn = document.getElementById('modal-wa-group-btn');
+      const copyWaLinkBtn = document.getElementById('copy-wa-link-btn');
+
+      const toastContainer = document.getElementById('toast-container');
+      const dinoMascot = document.getElementById('dino-mascot');
+      const dinoSvg = document.getElementById('dino-svg');
+      const confettiCanvas = document.getElementById('confetti-canvas');
+
+      let currentParticipant = null;
+      let isQuotaFull = false;
+      let isPrinting = false;
+      let isCutting = false;
+      let isTorn = false;
+      let printSequenceToken = 0;
+      let cutRafId = null;
+      let confettiAnimId = null;
+
+      // Pre-generated Official E-Ticket PDF state (Zero heavy work during cutting animation!)
+      let preparedPdfBlob = null;
+      let preparedPdfUrl = null;
+      let preparedPdfFilename = 'Tiket-Gemini-Festival.pdf';
+      let preparedPdfPromise = null;
+      let qrLibReadyPromise = null;
+
+      /* ===================================================================
+         3. UTILITIES, TOASTS & RETRO AUDIO FX
+      =================================================================== */
+      function sleep(ms) {
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
+
+      /**
+       * Menyalin teks ke clipboard menggunakan execCommand agar tetap bekerja di dalam iframe.
+       */
+      function copyTextToClipboard(text) {
+        const temp = document.createElement('textarea');
+        temp.value = text;
+        temp.setAttribute('readonly', '');
+        temp.style.position = 'fixed';
+        temp.style.top = '-9999px';
+        temp.style.left = '-9999px';
+        document.body.appendChild(temp);
+        temp.select();
+        temp.setSelectionRange(0, text.length);
+        let ok = false;
+        try {
+          ok = document.execCommand('copy');
+        } catch (_) {
+          ok = false;
+        }
+        temp.remove();
+        return ok;
+      }
+
+      function showFormServerAlert(message) {
+        if (!message) {
+          formServerAlert.textContent = '';
+          formServerAlert.classList.add('hidden');
+          return;
+        }
+        formServerAlert.textContent = message;
+        formServerAlert.classList.remove('hidden');
+      }
+
+      /**
+       * Memperbarui UI indikator kuota peserta & otomatis menutup form jika kuota penuh.
+       */
+      function applyQuotaUI(quota) {
+        if (!quota) return;
+        const max = Number(quota.maxQuota || 0);
+        const rem = quota.remainingQuota;
+        isQuotaFull = Boolean(quota.isFull);
+
+        if (isQuotaFull) {
+          headerQuotaText.textContent = 'KUOTA PENUH (DITUTUP)';
+          headerQuotaBadge.classList.remove('bg-amber-50', 'text-amber-800');
+          headerQuotaBadge.classList.add('bg-red-100', 'text-red-800');
+          headerQuotaDot.classList.remove('animate-pulse');
+
+          formQuotaBanner.classList.remove('bg-red-50/90');
+          formQuotaBanner.classList.add('bg-red-100');
+          formQuotaDot.classList.remove('animate-pulse');
+          formQuotaTitle.textContent = 'PENDAFTARAN DITUTUP • KUOTA PENUH';
+          formQuotaDesc.textContent = 'Mohon maaf, seluruh kuota peserta Gemini Festival 2026 sudah terpenuhi.';
+
+          submitBtn.disabled = true;
+          submitBtnText.textContent = 'PENDAFTARAN DITUTUP';
+          submitBtnArrow.classList.add('hidden');
+          submitBtn.classList.remove('bg-googleBlue', 'hover:bg-blue-600');
+          submitBtn.classList.add('bg-slate-500');
+        } else if (max > 0 && rem !== null && rem !== undefined) {
+          headerQuotaText.textContent = `SISA KUOTA: ${rem} / ${max}`;
+          formQuotaTitle.textContent = `GRATIS BIAYA REGISTRASI • SISA ${rem} DARI ${max} KURSI`;
+          formQuotaDesc.textContent = 'Pendaftaran akan otomatis ditutup lebih cepat apabila kuota peserta sudah penuh.';
+        }
+      }
+
+      function generateTicketId() {
+        return `GF26-${Math.floor(1000 + Math.random() * 9000)}`;
+      }
+
+      function sanitizeFilename(name) {
+        const clean = (name || 'Peserta')
+          .trim()
+          .replace(/[^a-zA-Z0-9\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .slice(0, 42);
+        return clean || 'Peserta';
+      }
+
+      function formatIndonesianTimestamp(isoStr) {
+        try {
+          const d = new Date(isoStr);
+          const months = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt', 'Nov', 'Des'];
+          const dd = String(d.getDate()).padStart(2, '0');
+          const mm = months[d.getMonth()];
+          const yyyy = d.getFullYear();
+          const hh = String(d.getHours()).padStart(2, '0');
+          const min = String(d.getMinutes()).padStart(2, '0');
+          return `${dd} ${mm} ${yyyy}, ${hh}:${min} WIB`;
+        } catch (_) {
+          return 'Terverifikasi 2026';
+        }
+      }
+
+      function showToast(message, type = 'info') {
+        const styles = {
+          success: 'bg-emerald-50 border-emerald-700 text-emerald-950',
+          error: 'bg-red-50 border-googleRed text-red-950',
+          info: 'bg-white border-ink text-ink',
+        };
+        const icons = { success: '✓', error: '!', info: '★' };
+
+        const toast = document.createElement('div');
+        toast.className = `pointer-events-auto border-[2.5px] shadow-[4px_4px_0px_#1e1b4b] rounded-md px-3.5 py-2.5 flex items-center gap-2.5 text-xs sm:text-sm font-bold transition-all duration-300 translate-x-6 opacity-0 ${styles[type] || styles.info}`;
+        toast.innerHTML = `
+          <span class="w-6 h-6 shrink-0 rounded border-2 border-ink bg-warmYellow text-ink font-pixel text-xs flex items-center justify-center">${icons[type] || '★'}</span>
+          <span class="leading-snug"></span>
+        `;
+        toast.querySelector('span:last-child').textContent = message;
+        toastContainer.appendChild(toast);
+
+        requestAnimationFrame(() => toast.classList.remove('translate-x-6', 'opacity-0'));
+
+        setTimeout(() => {
+          toast.classList.add('translate-x-6', 'opacity-0');
+          setTimeout(() => toast.remove(), 320);
+        }, 3800);
+      }
+
+      function playRetroSound(type) {
+        try {
+          const AudioCtx = window.AudioContext || window.webkitAudioContext;
+          if (!AudioCtx) return;
+          const ctx = new AudioCtx();
+          const now = ctx.currentTime;
+
+          if (type === 'ready') {
+            [523.25, 659.25, 783.99, 1046.5].forEach((freq, i) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = 'triangle';
+              osc.frequency.setValueAtTime(freq, now + i * 0.065);
+              gain.gain.setValueAtTime(0.032, now + i * 0.065);
+              gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.065 + 0.16);
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(now + i * 0.065);
+              osc.stop(now + i * 0.065 + 0.17);
+            });
+          } else if (type === 'tear') {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(980, now);
+            osc.frequency.exponentialRampToValueAtTime(220, now + 0.55);
+            gain.gain.setValueAtTime(0.025, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.58);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.6);
+          } else if (type === 'dino') {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(440, now);
+            osc.frequency.exponentialRampToValueAtTime(780, now + 0.11);
+            gain.gain.setValueAtTime(0.024, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.13);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now);
+            osc.stop(now + 0.14);
+          }
+
+          setTimeout(() => {
+            if (ctx.state !== 'closed') ctx.close().catch(() => {});
+          }, 950);
+        } catch (_) {
+          // Ignore browser autoplay policies
+        }
+      }
+
+      /* ===================================================================
+         4. 100% REAL SCANNABLE ISO/IEC 18004 QR CODE + REAL CODE 128B BARCODE
+            (Guaranteed CDN Load + Pure Integer Pixels + 4-Module Quiet Zone)
+      =================================================================== */
+
+      /**
+       * Membentuk payload teks resmi yang diverifikasi di dalam QR Code peserta.
+       */
+      function buildVerifiedQrPayload(data) {
+        const semRaw = String(data.semester || '').trim();
+        const semCompact = semRaw.replace(/^Semester\s*/i, '');
+        const prodiLine = /^Semester/i.test(semRaw)
+          ? `${data.jurusan} (Sem. ${semCompact})`
+          : `${data.jurusan} (${semRaw})`;
+
+        return [
+          'TERVERIFIKASI: PESERTA GEMINI FESTIVAL 2026',
+          `Kode: ${data.ticketId}`,
+          `Nama: ${data.nama}`,
+          `Email: ${data.email}`,
+          `WA: ${data.whatsapp}`,
+          `Prodi: ${prodiLine}`,
+          `Univ: ${data.universitas}`,
+          'Acara: 29 Nov 2026, 07.30 WIB',
+          'Lokasi: Aula Lt. 4, Gedung FTIK',
+          'Status: VALID - FREE PASS',
+        ].join('\n');
+      }
+
+      /**
+       * Memastikan library qrcode-generator (window.qrcode) benar-benar siap
+       * sebelum merender QR Code ke modal maupun ke PDF offscreen canvas.
+       */
+      function ensureQrLibraryLoaded() {
+        if (typeof window.qrcode === 'function') {
+          return Promise.resolve(true);
+        }
+        if (qrLibReadyPromise) {
+          return qrLibReadyPromise;
+        }
+
+        const urls = [
+          'https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js',
+          'https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js',
+        ];
+
+        const loadScript = (src) =>
+          new Promise((resolve) => {
+            const s = document.createElement('script');
+            s.src = src;
+            s.async = true;
+            s.onload = () => resolve(typeof window.qrcode === 'function');
+            s.onerror = () => resolve(false);
+            document.head.appendChild(s);
+          });
+
+        qrLibReadyPromise = (async () => {
+          // Give initial <head> script up to 900ms if currently downloading
+          for (let i = 0; i < 18; i++) {
+            if (typeof window.qrcode === 'function') return true;
+            await sleep(50);
+          }
+          for (const url of urls) {
+            if (typeof window.qrcode === 'function') return true;
+            const ok = await loadScript(url);
+            if (ok) return true;
+          }
+          return typeof window.qrcode === 'function';
+        })();
+
+        return qrLibReadyPromise;
+      }
+
+      /**
+       * Menghasilkan matriks QR Code ISO/IEC 18004 asli dengan qrcode(0, 'M').
+       */
+      function buildQrMatrix(text) {
+        if (typeof window.qrcode !== 'function') {
+          throw new Error('Library qrcode-generator belum termuat.');
+        }
+        const qr = window.qrcode(0, 'M');
+        qr.addData(text, 'Byte');
+        qr.make();
+        const count = qr.getModuleCount();
+        const matrix = [];
+        for (let r = 0; r < count; r++) {
+          const row = [];
+          for (let c = 0; c < count; c++) {
+            row.push(qr.isDark(r, c));
+          }
+          matrix.push(row);
+        }
+        return matrix;
+      }
+
+      /**
+       * Menggambar QR Code asli dengan piksel integer presisi tinggi,
+       * pure #000000 di atas #FFFFFF, imageSmoothingEnabled = false,
+       * dan quiet zone wajib minimal 4 modul di keempat sisinya.
+       */
+      function drawQrMatrixOnContext(ctx, matrix, x, y, drawSize) {
+        const count = matrix.length;
+        const quietModules = 4; // Standar ISO/IEC 18004 wajib minimal 4 modul
+        const totalModules = count + quietModules * 2;
+        const cellSize = Math.max(1, Math.floor(drawSize / totalModules));
+        const renderedSize = cellSize * totalModules;
+        const offsetX = Math.floor(x + (drawSize - renderedSize) / 2);
+        const offsetY = Math.floor(y + (drawSize - renderedSize) / 2);
+
+        ctx.save();
+        ctx.imageSmoothingEnabled = false;
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(Math.floor(x), Math.floor(y), Math.ceil(drawSize), Math.ceil(drawSize));
+
+        ctx.fillStyle = '#000000';
+        for (let r = 0; r < count; r++) {
+          for (let c = 0; c < count; c++) {
+            if (matrix[r][c]) {
+              ctx.fillRect(
+                offsetX + (c + quietModules) * cellSize,
+                offsetY + (r + quietModules) * cellSize,
+                cellSize,
+                cellSize
+              );
+            }
+          }
+        }
+        ctx.restore();
+      }
+
+      async function renderModalQr(payloadText) {
+        const loaded = await ensureQrLibraryLoaded();
+        const ctx = qrCanvas.getContext('2d');
+        ctx.imageSmoothingEnabled = false;
+
+        if (!loaded) {
+          ctx.fillStyle = '#FFFFFF';
+          ctx.fillRect(0, 0, qrCanvas.width, qrCanvas.height);
+          ctx.fillStyle = '#EA4335';
+          ctx.font = 'bold 16px monospace';
+          ctx.textAlign = 'center';
+          ctx.fillText('QR OFFLINE', qrCanvas.width / 2, qrCanvas.height / 2);
+          ctx.textAlign = 'left';
+          return;
+        }
+
+        const matrix = buildQrMatrix(payloadText);
+        // Set exact integer canvas resolution so HTML QR is razor-sharp when scanned directly from screen
+        const quietModules = 4;
+        const totalModules = matrix.length + quietModules * 2;
+        const scale = Math.max(3, Math.floor(260 / totalModules));
+        const exactPx = totalModules * scale;
+        qrCanvas.width = exactPx;
+        qrCanvas.height = exactPx;
+        drawQrMatrixOnContext(ctx, matrix, 0, 0, exactPx);
+      }
+
+      /**
+       * Pure-JS ISO/IEC 15417 Code 128B Linear Barcode Encoder (100% Real & Scannable)
+       */
+      const CODE128_PATTERNS = [
+        '212222','222122','222221','121223','121322','131222','122213','122312','132212','221213',
+        '221312','231212','112232','122132','122231','113222','123122','123221','223211','221132',
+        '221231','213212','223112','312131','311222','321122','321221','312212','322112','322211',
+        '212123','212321','232121','111323','131123','131321','112313','132113','132311','211313',
+        '231113','231311','112133','112331','132131','113123','113321','133121','313121','211331',
+        '231131','213113','213311','213131','311123','311321','331121','312113','312311','332111',
+        '314111','221411','431111','111224','111422','121124','121421','141122','141221','112214',
+        '112412','122114','122411','142112','142211','241211','221114','413111','241112','134111',
+        '111242','121142','121241','114212','124112','124211','411212','421112','421211','212141',
+        '214121','412121','111143','111341','131141','114113','114311','411113','411311','113141',
+        '114131','311141','411131','211412','211214','211232','2331112'
+      ];
+
+      function encodeCode128BModules(text) {
+        const clean = String(text || 'GF26-0000').replace(/[^\x20-\x7E]/g, '');
+        const codes = [104]; // Start Code B
+        let checksum = 104;
+
+        for (let i = 0; i < clean.length; i++) {
+          const val = clean.charCodeAt(i) - 32;
+          codes.push(val);
+          checksum += val * (i + 1);
+        }
+        codes.push(checksum % 103); // Modulo 103 check character
+        codes.push(106); // Stop pattern
+
+        const modules = [];
+        // 10-module left quiet zone
+        for (let q = 0; q < 10; q++) modules.push(0);
+
+        codes.forEach((codeIdx) => {
+          const pat = CODE128_PATTERNS[codeIdx];
+          for (let j = 0; j < pat.length; j++) {
+            const width = Number(pat[j]);
+            const isBar = j % 2 === 0 ? 1 : 0;
+            for (let k = 0; k < width; k++) modules.push(isBar);
+          }
+        });
+
+        // 10-module right quiet zone
+        for (let q = 0; q < 10; q++) modules.push(0);
+        return modules;
+      }
+
+      function drawCode128BOnContext(ctx, text, x, y, boxW, boxH) {
+        const modules = encodeCode128BModules(text);
+        const modW = Math.max(1, Math.floor(boxW / modules.length));
+        const totalW = modW * modules.length;
+        const startX = Math.floor(x + (boxW - totalW) / 2);
+
+        ctx.save();
+        ctx.imageSmoothingEnabled = false;
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(Math.floor(x), Math.floor(y), Math.ceil(boxW), Math.ceil(boxH));
+
+        ctx.fillStyle = '#000000';
+        for (let i = 0; i < modules.length; i++) {
+          if (modules[i] === 1) {
+            ctx.fillRect(startX + i * modW, Math.floor(y), modW, Math.floor(boxH));
+          }
+        }
+        ctx.restore();
+      }
+
+      function renderModalBarcode(ticketId) {
+        const modules = encodeCode128BModules(ticketId);
+        const modW = 2;
+        barcodeCanvas.width = modules.length * modW;
+        barcodeCanvas.height = 36;
+        const ctx = barcodeCanvas.getContext('2d');
+        drawCode128BOnContext(ctx, ticketId, 0, 2, barcodeCanvas.width, 32);
+      }
+
+      /* ===================================================================
+         5. HIGH-RESOLUTION OFFSCREEN OFFICIAL E-TICKET CANVAS (1000x1540px)
+            + BULLETPROOF PDF GENERATOR (jsPDF + BUILT-IN PURE-JS PDF 1.4 FALLBACK)
+      =================================================================== */
+      function drawRoundedRectPath(ctx, x, y, w, h, r) {
+        const radius = Math.min(r, w / 2, h / 2);
+        ctx.beginPath();
+        ctx.moveTo(x + radius, y);
+        ctx.lineTo(x + w - radius, y);
+        ctx.quadraticCurveTo(x + w, y, x + w, y + radius);
+        ctx.lineTo(x + w, y + h - radius);
+        ctx.quadraticCurveTo(x + w, y + h, x + w - radius, y + h);
+        ctx.lineTo(x + radius, y + h);
+        ctx.quadraticCurveTo(x, y + h, x, y + h - radius);
+        ctx.lineTo(x, y + radius);
+        ctx.quadraticCurveTo(x, y, x + radius, y);
+        ctx.closePath();
+      }
+
+      function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight, maxLines = 3) {
+        const raw = String(text || '—').trim();
+        const words = raw.split(/\s+/);
+        let line = '';
+        let linesDrawn = 0;
+
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line ? `${line} ${words[i]}` : words[i];
+          if (ctx.measureText(testLine).width > maxWidth && line) {
+            linesDrawn++;
+            if (linesDrawn >= maxLines) {
+              // Ellipsize last line cleanly
+              let clipped = line;
+              while (clipped.length > 1 && ctx.measureText(clipped + '…').width > maxWidth) {
+                clipped = clipped.slice(0, -1);
+              }
+              ctx.fillText(clipped + '…', x, y);
+              return y + lineHeight;
+            }
+            ctx.fillText(line, x, y);
+            y += lineHeight;
+            line = words[i];
+          } else {
+            line = testLine;
+          }
+        }
+        if (line) {
+          let clipped = line;
+          while (clipped.length > 1 && ctx.measureText(clipped).width > maxWidth) {
+            clipped = clipped.slice(0, -1);
+          }
+          ctx.fillText(clipped !== line ? clipped + '…' : clipped, x, y);
+        }
+        return y + lineHeight;
+      }
+
+      function drawPixelSparkleOnCanvas(ctx, cx, cy, size) {
+        const u = size / 12;
+        const grad = ctx.createLinearGradient(cx - size / 2, cy - size / 2, cx + size / 2, cy + size / 2);
+        grad.addColorStop(0, '#4285F4');
+        grad.addColorStop(0.5, '#8B5CF6');
+        grad.addColorStop(1, '#EC4899');
+        ctx.fillStyle = grad;
+
+        ctx.fillRect(cx - u, cy - 6 * u, 2 * u, 12 * u);
+        ctx.fillRect(cx - 2 * u, cy - 4 * u, 4 * u, 8 * u);
+        ctx.fillRect(cx - 6 * u, cy - u, 12 * u, 2 * u);
+        ctx.fillRect(cx - 4 * u, cy - 2 * u, 8 * u, 4 * u);
+        ctx.fillRect(cx - 3 * u, cy - 3 * u, 6 * u, 6 * u);
+        ctx.fillStyle = 'rgba(255,255,255,0.7)';
+        ctx.fillRect(cx - u, cy - u, 2 * u, 2 * u);
+      }
+
+      /**
+       * Merender E-Tiket Resmi Gemini Festival (Bukti Pendaftaran Resmi + Box Grup WA)
+       * langsung ke offscreen <canvas> 1000x1680px dengan ketajaman cetak maksimal.
+       */
+      function renderOfficialTicketCanvas(data) {
+        const W = 1000;
+        const H = 1680;
+        const canvas = document.createElement('canvas');
+        canvas.width = W;
+        canvas.height = H;
+        const ctx = canvas.getContext('2d');
+
+        // 1. Crisp Pastel Pixel Sky Outer Backdrop + Dot Grid
+        const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
+        bgGrad.addColorStop(0, '#dbeeff');
+        bgGrad.addColorStop(1, '#eef6ff');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, W, H);
+
+        ctx.fillStyle = 'rgba(66, 133, 244, 0.14)';
+        for (let gx = 24; gx < W; gx += 32) {
+          for (let gy = 24; gy < H; gy += 32) {
+            ctx.fillRect(gx, gy, 3, 3);
+          }
+        }
+
+        // Ticket Card Outer Dimensions
+        const cardX = 56;
+        const cardY = 52;
+        const cardW = W - 112; // 888
+        const cardH = H - 104; // 1436
+        const perfY = 1004;
+
+        // Hard Offset Neo-Brutalist Drop Shadow
+        ctx.fillStyle = '#1e1b4b';
+        drawRoundedRectPath(ctx, cardX + 16, cardY + 16, cardW, cardH, 18);
+        ctx.fill();
+
+        // Main White Ticket Card Body
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, cardX, cardY, cardW, cardH, 18);
+        ctx.fill();
+
+        // Subtle Multiverse Radial Ambient Glows inside Card
+        ctx.save();
+        drawRoundedRectPath(ctx, cardX, cardY, cardW, cardH, 18);
+        ctx.clip();
+
+        const g1 = ctx.createRadialGradient(cardX + cardW * 0.88, cardY + 110, 20, cardX + cardW * 0.88, cardY + 110, 340);
+        g1.addColorStop(0, 'rgba(139, 92, 246, 0.14)');
+        g1.addColorStop(1, 'rgba(139, 92, 246, 0)');
+        ctx.fillStyle = g1;
+        ctx.fillRect(cardX, cardY, cardW, cardH);
+
+        const g2 = ctx.createRadialGradient(cardX + cardW * 0.12, cardY + 180, 20, cardX + cardW * 0.12, cardY + 180, 360);
+        g2.addColorStop(0, 'rgba(66, 133, 244, 0.12)');
+        g2.addColorStop(1, 'rgba(66, 133, 244, 0)');
+        ctx.fillStyle = g2;
+        ctx.fillRect(cardX, cardY, cardW, cardH);
+
+        // Soft tint for bottom check-in stub
+        ctx.fillStyle = '#f5f8ff';
+        ctx.fillRect(cardX, perfY, cardW, cardY + cardH - perfY);
+
+        // 4-Color Google Segmented Top Bar
+        const segW = cardW / 4;
+        const barH = 20;
+        const gColors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853'];
+        gColors.forEach((col, idx) => {
+          ctx.fillStyle = col;
+          ctx.fillRect(cardX + idx * segW, cardY, segW + 1, barH);
+        });
+        ctx.fillStyle = '#1e1b4b';
+        ctx.fillRect(cardX, cardY + barH, cardW, 5);
+        ctx.restore();
+
+        // Crisp Outer Card Border
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.lineWidth = 7;
+        drawRoundedRectPath(ctx, cardX, cardY, cardW, cardH, 18);
+        ctx.stroke();
+
+        // Exact Verified Column Math:
+        // Left Header Text Column: x = 115..670 (maxWidth = 555px)
+        // Right Header Column:     x = 710..885 (at least 40px horizontal breathing room!)
+        const innerX = 115;
+        const innerRight = 885;
+        const innerW = innerRight - innerX; // 770
+
+        // 2. HEADER BADGE ROW (LEFT) + 7 MINI COLOR BLOCKS (RIGHT)
+        const badgeY = cardY + 50; // 102
+        ctx.fillStyle = '#eef2ff';
+        drawRoundedRectPath(ctx, innerX, badgeY, 535, 42, 8);
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        ctx.fillStyle = '#4285F4';
+        ctx.fillRect(innerX + 14, badgeY + 14, 14, 14);
+
+        ctx.fillStyle = '#1e1b4b';
+        ctx.font = '700 17px "Silkscreen", "JetBrains Mono", monospace';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('OFFICIAL E-TICKET • BUKTI PENDAFTARAN', innerX + 38, badgeY + 22);
+
+        // Top-right 7 Dimension Squares (x = 717..885)
+        const dimColors = ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8B5CF6', '#F97316', '#14B8A6'];
+        dimColors.forEach((col, i) => {
+          const sx = innerRight - (7 - i) * 24 + 6;
+          ctx.fillStyle = col;
+          ctx.fillRect(sx, badgeY + 12, 18, 18);
+          ctx.lineWidth = 2.5;
+          ctx.strokeStyle = '#1e1b4b';
+          ctx.strokeRect(sx, badgeY + 12, 18, 18);
+        });
+
+        // 3. LEFT HEADER COLUMN (x = 115..670): GEMINI FESTIVAL + 2-LINE THEME SUBTITLE
+        const titleY = badgeY + 96; // 198
+        ctx.font = '700 58px "Silkscreen", monospace';
+        ctx.fillStyle = '#4285F4';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText('GEMINI', innerX, titleY);
+
+        ctx.fillStyle = '#1e1b4b';
+        ctx.fillText('FESTIVAL', innerX, titleY + 60);
+
+        // Subtitle Line 1: Blue bold + yellow pixel underline (strictly inside left column)
+        ctx.font = '700 24px "Space Grotesk", sans-serif';
+        ctx.fillStyle = '#4285F4';
+        ctx.fillText('The Gemini Multiverse:', innerX, titleY + 102);
+
+        ctx.fillStyle = '#FBBF24';
+        ctx.fillRect(innerX, titleY + 110, 268, 6);
+
+        // Subtitle Line 2: Dark navy bold right underneath Line 1 — ZERO overlap with right badge!
+        ctx.font = '700 25px "Space Grotesk", sans-serif';
+        ctx.fillStyle = '#1e1b4b';
+        ctx.fillText('7 Dimensions of Productivity', innerX, titleY + 144);
+
+        // RIGHT HEADER COLUMN (x = 715..885): PIXEL GEMINI SPARKLE + COMPACT GF26-XXXX BADGE
+        const idBoxW = 170;
+        const idBoxH = 44;
+        const idBoxX = innerRight - idBoxW; // 715 (>= 45px clear of x=670!)
+        const rightCenterX = idBoxX + idBoxW / 2; // 800
+
+        // Crisp 4-point Gemini Sparkle neatly centered above the badge
+        drawPixelSparkleOnCanvas(ctx, rightCenterX, titleY + 12, 86);
+
+        // Compact Yellow Neo-Brutalist Registration Code Badge tucked right under sparkle
+        const idBoxY = titleY + 76; // 274..318
+        ctx.fillStyle = '#1e1b4b';
+        drawRoundedRectPath(ctx, idBoxX + 4, idBoxY + 4, idBoxW, idBoxH, 7);
+        ctx.fill();
+
+        ctx.fillStyle = '#FBBF24';
+        drawRoundedRectPath(ctx, idBoxX, idBoxY, idBoxW, idBoxH, 7);
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        ctx.fillStyle = '#1e1b4b';
+        ctx.font = '800 20px "JetBrains Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(data.ticketId, rightCenterX, idBoxY + idBoxH / 2 + 1);
+        ctx.textAlign = 'left';
+
+        // Dashed Divider below Header
+        const div1Y = titleY + 170; // 368
+        ctx.save();
+        ctx.strokeStyle = '#cbd5e1';
+        ctx.lineWidth = 3;
+        ctx.setLineDash([12, 9]);
+        ctx.beginPath();
+        ctx.moveTo(innerX, div1Y);
+        ctx.lineTo(innerX + innerW, div1Y);
+        ctx.stroke();
+        ctx.restore();
+
+        // 4. STRUCTURED PARTICIPANT INFO BOXES
+        const drawFieldBox = (bx, by, bw, bh, label, value, valueFont, highlightBg = '#ffffff') => {
+          ctx.fillStyle = highlightBg;
+          drawRoundedRectPath(ctx, bx, by, bw, bh, 10);
+          ctx.fill();
+          ctx.lineWidth = 3;
+          ctx.strokeStyle = '#1e1b4b';
+          ctx.stroke();
+
+          ctx.fillStyle = '#64748b';
+          ctx.font = '700 15px "JetBrains Mono", monospace';
+          ctx.textBaseline = 'top';
+          ctx.fillText(label, bx + 20, by + 14);
+
+          ctx.fillStyle = '#1e1b4b';
+          ctx.font = valueFont;
+          wrapCanvasText(ctx, value, bx + 20, by + 40, bw - 40, 28, 2);
+        };
+
+        let curY = div1Y + 24; // 392
+
+        // Nama Lengkap (Full width)
+        drawFieldBox(innerX, curY, innerW, 96, 'NAMA LENGKAP PESERTA', data.nama, '700 29px "Space Grotesk", sans-serif', '#f8fbff');
+        curY += 114;
+
+        // Row 2: Email + Nomor WhatsApp
+        const halfGap = 20;
+        const halfW = (innerW - halfGap) / 2;
+        drawFieldBox(innerX, curY, halfW, 96, 'EMAIL TERDAFTAR', data.email, '600 20px "Space Grotesk", sans-serif');
+        drawFieldBox(innerX + halfW + halfGap, curY, halfW, 96, 'NOMOR WHATSAPP', data.whatsapp, '700 21px "JetBrains Mono", monospace');
+        curY += 114;
+
+        // Row 3: Jurusan & Semester + Asal Universitas
+        drawFieldBox(innerX, curY, halfW, 102, 'JURUSAN & SEMESTER', `${data.jurusan} • ${data.semester}`, '600 20px "Space Grotesk", sans-serif');
+        drawFieldBox(innerX + halfW + halfGap, curY, halfW, 102, 'ASAL UNIVERSITAS', data.universitas, '600 20px "Space Grotesk", sans-serif');
+        curY += 120;
+
+        // Status Strip Box
+        ctx.fillStyle = '#ecfdf5';
+        drawRoundedRectPath(ctx, innerX, curY, innerW, 54, 10);
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#15803d';
+        ctx.stroke();
+
+        ctx.fillStyle = '#15803d';
+        ctx.font = '700 17px "Silkscreen", monospace';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('✓ STATUS: TERDAFTAR — GRATIS (FREE PASS)', innerX + 20, curY + 28);
+
+        ctx.fillStyle = '#166534';
+        ctx.font = '700 15px "JetBrains Mono", monospace';
+        ctx.textAlign = 'right';
+        ctx.fillText('ADMIT ONE', innerX + innerW - 20, curY + 28);
+        ctx.textAlign = 'left';
+
+        curY += 72;
+
+        // 5. HIGHLIGHTED EVENT SCHEDULE BOX
+        ctx.fillStyle = '#1e1b4b';
+        drawRoundedRectPath(ctx, innerX + 6, curY + 6, innerW, 120, 12);
+        ctx.fill();
+
+        ctx.fillStyle = '#edf4ff';
+        drawRoundedRectPath(ctx, innerX, curY, innerW, 120, 12);
+        ctx.fill();
+        ctx.lineWidth = 3.5;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        const cols = [
+          { title: 'TANGGAL ACARA', val1: 'Minggu, 29 Nov', val2: '2026' },
+          { title: 'WAKTU', val1: '07.30 WIB', val2: 's/d Selesai' },
+          { title: 'LOKASI ACARA', val1: 'Aula Lantai 4', val2: 'Gedung FTIK' },
+        ];
+        const colW = innerW / 3;
+        cols.forEach((col, i) => {
+          const cx = innerX + i * colW;
+          if (i > 0) {
+            ctx.strokeStyle = 'rgba(30, 27, 75, 0.2)';
+            ctx.lineWidth = 2;
+            ctx.beginPath();
+            ctx.moveTo(cx, curY + 18);
+            ctx.lineTo(cx, curY + 102);
+            ctx.stroke();
+          }
+          ctx.fillStyle = '#4285F4';
+          ctx.font = '700 14px "JetBrains Mono", monospace';
+          ctx.textBaseline = 'top';
+          ctx.fillText(col.title, cx + 20, curY + 18);
+
+          ctx.fillStyle = '#1e1b4b';
+          ctx.font = '700 21px "Space Grotesk", sans-serif';
+          ctx.fillText(col.val1, cx + 20, curY + 46);
+          ctx.font = '700 18px "Space Grotesk", sans-serif';
+          ctx.fillStyle = '#334155';
+          ctx.fillText(col.val2, cx + 20, curY + 76);
+        });
+
+        // 6. PERFORATION DIVIDER WITH NOTCHES & SCISSOR MARK
+        ctx.save();
+        ctx.strokeStyle = '#94a3b8';
+        ctx.lineWidth = 4;
+        ctx.setLineDash([14, 10]);
+        ctx.beginPath();
+        ctx.moveTo(cardX + 26, perfY);
+        ctx.lineTo(cardX + cardW - 26, perfY);
+        ctx.stroke();
+        ctx.restore();
+
+        // Left & Right Semicircular Ticket Punches
+        [cardX, cardX + cardW].forEach((nx) => {
+          ctx.fillStyle = '#e4f2ff';
+          ctx.beginPath();
+          ctx.arc(nx, perfY, 24, 0, Math.PI * 2);
+          ctx.fill();
+          ctx.lineWidth = 6;
+          ctx.strokeStyle = '#1e1b4b';
+          ctx.stroke();
+        });
+
+        // Mask outer half of punches cleanly to match page backdrop
+        ctx.fillStyle = '#e5f2ff';
+        ctx.fillRect(0, perfY - 30, cardX - 3, 60);
+        ctx.fillRect(cardX + cardW + 3, perfY - 30, W - (cardX + cardW) - 3, 60);
+
+        // Center perforation badge
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, W / 2 - 145, perfY - 16, 290, 32, 6);
+        ctx.fill();
+        ctx.fillStyle = '#64748b';
+        ctx.font = '700 14px "JetBrains Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('✂  CHECK-IN PASS STUB  ✂', W / 2, perfY + 1);
+        ctx.textAlign = 'left';
+
+        // 7. BOTTOM CHECK-IN STUB: 100% REAL SCANNABLE QR CODE + REAL CODE 128B BARCODE
+        const stubY = perfY + 46; // 1050
+        const qrBoxSize = 292; // Generous 292x292 box for effortless smartphone scanning!
+
+        // QR Hard Shadow & Pure White Box
+        ctx.fillStyle = '#1e1b4b';
+        drawRoundedRectPath(ctx, innerX + 7, stubY + 7, qrBoxSize, qrBoxSize, 12);
+        ctx.fill();
+
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, innerX, stubY, qrBoxSize, qrBoxSize, 12);
+        ctx.fill();
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        // Render Genuine ISO/IEC 18004 QR Code with Verified Participant Data & 4-Module Quiet Zone
+        const qrPayload = buildVerifiedQrPayload(data);
+        const qrMatrix = buildQrMatrix(qrPayload);
+        drawQrMatrixOnContext(ctx, qrMatrix, innerX + 6, stubY + 6, qrBoxSize - 12);
+
+        // Label beneath QR Box
+        ctx.fillStyle = '#15803d';
+        ctx.font = '700 14px "JetBrains Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText('✓ SCAN QR UNTUK VERIFIKASI', innerX + qrBoxSize / 2, stubY + qrBoxSize + 18);
+        ctx.textAlign = 'left';
+
+        // Right Column: Official Verification Instructions + Real Code 128B Barcode + Timestamp
+        const infoX = innerX + qrBoxSize + 34; // 441
+        const infoW = innerRight - infoX; // 444
+
+        ctx.fillStyle = '#1e1b4b';
+        drawRoundedRectPath(ctx, infoX, stubY, 344, 38, 6);
+        ctx.fill();
+
+        ctx.fillStyle = '#FFFFFF';
+        ctx.font = '700 16px "Silkscreen", monospace';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('BUKTI PENDAFTARAN RESMI', infoX + 14, stubY + 20);
+
+        ctx.fillStyle = '#1e1b4b';
+        ctx.font = '600 19px "Space Grotesk", sans-serif';
+        ctx.textBaseline = 'top';
+        const nextY = wrapCanvasText(
+          ctx,
+          'Simpan & tunjukkan E-Tiket ini (digital atau cetak) kepada panitia saat registrasi ulang di Aula Lantai 4, Gedung FTIK. Berlaku untuk 1 peserta terdaftar.',
+          infoX,
+          stubY + 54,
+          infoW,
+          28,
+          5
+        );
+
+        // Real ISO/IEC 15417 Code 128B Barcode Box (Encodes GF26-XXXX)
+        const barBoxY = Math.max(nextY + 14, stubY + 194);
+        const barBoxW = Math.min(350, infoW);
+        const barBoxH = 62;
+
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, infoX, barBoxY, barBoxW, barBoxH, 8);
+        ctx.fill();
+        ctx.lineWidth = 2.5;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        drawCode128BOnContext(ctx, data.ticketId, infoX + 8, barBoxY + 8, barBoxW - 16, barBoxH - 16);
+
+        // Registration Code & Timestamp Lines
+        ctx.fillStyle = '#1e1b4b';
+        ctx.font = '800 16px "JetBrains Mono", monospace';
+        ctx.fillText(`KODE: ${data.ticketId}`, infoX, barBoxY + barBoxH + 14);
+
+        ctx.fillStyle = '#475569';
+        ctx.font = '700 14px "JetBrains Mono", monospace';
+        ctx.fillText(`TERDAFTAR: ${formatIndonesianTimestamp(data.timestamp)}`, infoX, barBoxY + barBoxH + 38);
+
+        // 8. DEDICATED WHATSAPP GROUP BOX (CLICKABLE LINK AREA IN PDF!)
+        const waLink = data.waGroupLink || DEFAULT_WA_GROUP_LINK;
+        const waDisplayUrl = waLink.replace(/\?.*$/, ''); // Clean display URL while keeping full invite URL clickable
+        const waBoxY = stubY + qrBoxSize + 62; // 1404
+        const waBoxH = 132;
+
+        // Hard offset shadow
+        ctx.fillStyle = '#1e1b4b';
+        drawRoundedRectPath(ctx, innerX + 5, waBoxY + 5, innerW, waBoxH, 12);
+        ctx.fill();
+
+        // Mint emerald card body
+        ctx.fillStyle = '#ecfdf5';
+        drawRoundedRectPath(ctx, innerX, waBoxY, innerW, waBoxH, 12);
+        ctx.fill();
+        ctx.lineWidth = 3.5;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        // Left pixel WhatsApp icon square
+        const waIconX = innerX + 20;
+        const waIconY = waBoxY + 24;
+        const waIconSize = 84;
+        ctx.fillStyle = '#22c55e';
+        drawRoundedRectPath(ctx, waIconX, waIconY, waIconSize, waIconSize, 10);
+        ctx.fill();
+        ctx.lineWidth = 3;
+        ctx.strokeStyle = '#1e1b4b';
+        ctx.stroke();
+
+        // Crisp pixel speech bubble inside green icon
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, waIconX + 18, waIconY + 18, 48, 36, 8);
+        ctx.fill();
+        ctx.beginPath();
+        ctx.moveTo(waIconX + 26, waIconY + 54);
+        ctx.lineTo(waIconX + 22, waIconY + 66);
+        ctx.lineTo(waIconX + 40, waIconY + 54);
+        ctx.closePath();
+        ctx.fill();
+        ctx.fillStyle = '#15803d';
+        ctx.fillRect(waIconX + 28, waIconY + 32, 7, 7);
+        ctx.fillRect(waIconX + 39, waIconY + 32, 7, 7);
+        ctx.fillRect(waIconX + 50, waIconY + 32, 7, 7);
+
+        // Right text content inside WA box
+        const waTextX = waIconX + waIconSize + 20;
+        const waTextW = innerX + innerW - waTextX - 20;
+
+        ctx.fillStyle = '#15803d';
+        ctx.font = '700 17px "Silkscreen", monospace';
+        ctx.textBaseline = 'top';
+        ctx.fillText('GRUP WHATSAPP PESERTA (WAJIB GABUNG)', waTextX, waBoxY + 18);
+
+        ctx.fillStyle = '#1e1b4b';
+        ctx.font = '600 17px "Space Grotesk", sans-serif';
+        ctx.fillText('Info rundown, pengumuman & koordinasi hari H (klik kotak ini):', waTextX, waBoxY + 46);
+
+        // URL Pill inside WA box
+        const urlPillY = waBoxY + 76;
+        const urlPillH = 38;
+        ctx.fillStyle = '#FFFFFF';
+        drawRoundedRectPath(ctx, waTextX, urlPillY, waTextW, urlPillH, 7);
+        ctx.fill();
+        ctx.lineWidth = 2;
+        ctx.strokeStyle = '#15803d';
+        ctx.stroke();
+
+        ctx.fillStyle = '#15803d';
+        ctx.font = '700 16px "JetBrains Mono", monospace';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(waDisplayUrl, waTextX + 14, urlPillY + urlPillH / 2 + 1);
+        ctx.textBaseline = 'top';
+
+        // Bottom Security Footer inside Card
+        ctx.fillStyle = '#64748b';
+        ctx.font = '700 14px "JetBrains Mono", monospace';
+        ctx.textAlign = 'center';
+        ctx.fillText('GEMINI FESTIVAL 2026 • OFFICIAL VERIFIED PARTICIPANT PASS', W / 2, cardY + cardH - 34);
+        ctx.textAlign = 'left';
+
+        // Attach clickable PDF link coordinates for jsPDF annotation
+        canvas._waLinkBox = {
+          x: innerX,
+          y: waBoxY,
+          w: innerW,
+          h: waBoxH,
+          url: waLink,
+        };
+
+        return canvas;
+      }
+
+      /**
+       * BUILT-IN PURE-JS PDF 1.4 JPEG-TO-PDF BINARY ENCODER FALLBACK (~40 lines)
+       * Menghasilkan file %PDF-1.4 valid standar ISO meskipun CDN jsPDF gagal dimuat/diblokir!
+       */
+      function encodeJpegDataUrlToPdfBlob(jpegDataUrl, pxW, pxH) {
+        const base64 = jpegDataUrl.split(',')[1];
+        const binStr = atob(base64);
+        const jpegBytes = new Uint8Array(binStr.length);
+        for (let i = 0; i < binStr.length; i++) {
+          jpegBytes[i] = binStr.charCodeAt(i);
+        }
+
+        // Page size in PDF points (72pt = 1 inch): Crisp ticket proportions (~127mm x 195mm)
+        const ptW = 360;
+        const ptH = Math.round((pxH / pxW) * ptW);
+
+        const enc = new TextEncoder();
+        const chunks = [];
+        let offset = 0;
+        const offsets = [0];
+
+        const pushStr = (s) => {
+          const b = enc.encode(s);
+          chunks.push(b);
+          offset += b.length;
+        };
+        const pushBytes = (b) => {
+          chunks.push(b);
+          offset += b.length;
+        };
+
+        // PDF 1.4 Binary Header
+        pushBytes(new Uint8Array([0x25, 0x50, 0x44, 0x46, 0x2d, 0x31, 0x2e, 0x34, 0x0a, 0x25, 0xe2, 0xe3, 0xcf, 0xd3, 0x0a]));
+
+        offsets.push(offset);
+        pushStr('1 0 obj\n<< /Type /Catalog /Pages 2 0 R >>\nendobj\n');
+
+        offsets.push(offset);
+        pushStr('2 0 obj\n<< /Type /Pages /Kids [3 0 R] /Count 1 >>\nendobj\n');
+
+        offsets.push(offset);
+        pushStr(`3 0 obj\n<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${ptW} ${ptH}] /Resources << /XObject << /Im0 4 0 R >> >> /Contents 5 0 R >>\nendobj\n`);
+
+        offsets.push(offset);
+        pushStr(`4 0 obj\n<< /Type /XObject /Subtype /Image /Width ${pxW} /Height ${pxH} /ColorSpace /DeviceRGB /BitsPerComponent 8 /Filter /DCTDecode /Length ${jpegBytes.length} >>\nstream\n`);
+        pushBytes(jpegBytes);
+        pushStr('\nendstream\nendobj\n');
+
+        const contentStream = `q\n${ptW} 0 0 ${ptH} 0 0 cm\n/Im0 Do\nQ\n`;
+        offsets.push(offset);
+        pushStr(`5 0 obj\n<< /Length ${contentStream.length} >>\nstream\n${contentStream}endstream\nendobj\n`);
+
+        const xrefStart = offset;
+        let xref = `xref\n0 ${offsets.length}\n0000000000 65535 f \n`;
+        for (let i = 1; i < offsets.length; i++) {
+          xref += `${String(offsets[i]).padStart(10, '0')} 00000 n \n`;
+        }
+        pushStr(xref);
+        pushStr(`trailer\n<< /Size ${offsets.length} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`);
+
+        return new Blob(chunks, { type: 'application/pdf' });
+      }
+
+      /**
+       * Pre-generates Official E-Ticket PDF Blob in the background right when ticket opens
+       * so clicking "DOWNLOAD TIKET PDF" executes ZERO heavy work during the 60fps cutting animation!
+       */
+      async function pregenerateOfficialTicketPdf(participant) {
+        if (preparedPdfUrl) {
+          URL.revokeObjectURL(preparedPdfUrl);
+          preparedPdfUrl = null;
+        }
+        preparedPdfBlob = null;
+        preparedPdfFilename = `Tiket-Gemini-Festival-${sanitizeFilename(participant.nama)}.pdf`;
+        pdfReadyHint.textContent = 'Menyiapkan E-Tiket PDF + QR Code Terverifikasi...';
+
+        // Wait for genuine QR library AND custom fonts before rendering offscreen PDF canvas
+        await ensureQrLibraryLoaded();
+        if (document.fonts && document.fonts.ready) {
+          await document.fonts.ready;
+        }
+
+        // Yield one animation frame so modal opening stays 100% smooth
+        await new Promise((r) => requestAnimationFrame(r));
+
+        const ticketCanvas = renderOfficialTicketCanvas(participant);
+        const jpegDataUrl = ticketCanvas.toDataURL('image/jpeg', 0.95);
+
+        let pdfBlob = null;
+
+        // Primary: jsPDF if CDN loaded
+        try {
+          if (window.jspdf && typeof window.jspdf.jsPDF === 'function') {
+            const { jsPDF } = window.jspdf;
+            const pdfWidthMm = 127;
+            const pdfHeightMm = (ticketCanvas.height / ticketCanvas.width) * pdfWidthMm;
+            const doc = new jsPDF({
+              orientation: 'portrait',
+              unit: 'mm',
+              format: [pdfWidthMm, pdfHeightMm],
+            });
+            doc.addImage(jpegDataUrl, 'JPEG', 0, 0, pdfWidthMm, pdfHeightMm, undefined, 'FAST');
+
+            // Make the WhatsApp Group Box directly clickable inside the downloaded PDF!
+            if (ticketCanvas._waLinkBox && typeof doc.link === 'function') {
+              const mmPerPx = pdfWidthMm / ticketCanvas.width;
+              const box = ticketCanvas._waLinkBox;
+              doc.link(
+                box.x * mmPerPx,
+                box.y * mmPerPx,
+                box.w * mmPerPx,
+                box.h * mmPerPx,
+                { url: box.url }
+              );
+            }
+
+            pdfBlob = doc.output('blob');
+          }
+        } catch (err) {
+          console.warn('jsPDF failed, switching to built-in PDF 1.4 encoder:', err);
+        }
+
+        // Guaranteed Bulletproof Fallback: Built-in Pure-JS PDF 1.4 Encoder
+        if (!pdfBlob) {
+          pdfBlob = encodeJpegDataUrlToPdfBlob(jpegDataUrl, ticketCanvas.width, ticketCanvas.height);
+        }
+
+        preparedPdfBlob = pdfBlob;
+        preparedPdfUrl = URL.createObjectURL(pdfBlob);
+
+        // Bind direct download anchor immediately so 1-tap direct download is always armed
+        directDownloadLink.href = preparedPdfUrl;
+        directDownloadLink.download = preparedPdfFilename;
+        pdfReadyHint.textContent = `✓ PDF siap diunduh (${Math.max(1, Math.round(pdfBlob.size / 1024))} KB • Resmi untuk Check-In)`;
+
+        return { blob: pdfBlob, url: preparedPdfUrl, filename: preparedPdfFilename };
+      }
+
+      /**
+       * Triggers real browser PDF download reliably using Blob Anchor click.
+       */
+      function triggerBlobDownload(url, filename) {
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        a.rel = 'noopener';
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => a.remove(), 250);
+      }
+
+      /* ===================================================================
+         6. FORM VALIDATION & [ISI DEMO] HELPER
+      =================================================================== */
+      const fieldRules = [
+        {
+          id: 'nama',
+          validate: (v) => v.trim().length >= 2,
+          message: 'Nama lengkap wajib diisi (minimal 2 karakter).',
+        },
+        {
+          id: 'email',
+          validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()),
+          message: 'Masukkan alamat email yang valid (contoh: nama@email.com).',
+        },
+        {
+          id: 'whatsapp',
+          validate: (v) => {
+            const digits = v.replace(/\D/g, '');
+            return digits.length >= 9 && digits.length <= 15;
+          },
+          message: 'Nomor WhatsApp harus berisi 9–15 digit angka yang valid.',
+        },
+        {
+          id: 'jurusan',
+          validate: (v) => v.trim().length >= 2,
+          message: 'Jurusan wajib diisi.',
+        },
+        {
+          id: 'semester',
+          validate: (v) => v.trim() !== '',
+          message: 'Silakan pilih semester saat ini.',
+        },
+        {
+          id: 'universitas',
+          validate: (v) => v.trim().length >= 2,
+          message: 'Asal universitas wajib diisi.',
+        },
+      ];
+
+      function validateField(rule) {
+        const el = document.getElementById(rule.id);
+        const err = document.getElementById(`err-${rule.id}`);
+        const ok = rule.validate(el.value);
+        if (!ok) {
+          el.classList.add('input-error');
+          err.textContent = rule.message;
+          err.classList.remove('hidden');
+        } else {
+          el.classList.remove('input-error');
+          err.textContent = '';
+          err.classList.add('hidden');
+        }
+        return ok;
+      }
+
+      fieldRules.forEach((rule) => {
+        const el = document.getElementById(rule.id);
+        el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => {
+          if (el.classList.contains('input-error')) validateField(rule);
+        });
+      });
+
+      document.getElementById('whatsapp').addEventListener('input', function () {
+        this.value = this.value.replace(/[^0-9+\-\s]/g, '');
+      });
+
+      demoFillBtn.addEventListener('click', () => {
+        document.getElementById('nama').value = 'Fauzan Putra Afandi';
+        document.getElementById('email').value = 'fznptr15@gmail.com';
+        document.getElementById('whatsapp').value = '08888017484';
+        document.getElementById('jurusan').value = 'Sistem Informasi';
+        document.getElementById('semester').value = 'Semester 5';
+        document.getElementById('universitas').value = 'Universitas Terbuka';
+        fieldRules.forEach((r) => {
+          document.getElementById(r.id).classList.remove('input-error');
+          document.getElementById(`err-${r.id}`).classList.add('hidden');
+        });
+        showToast('Data demo terisi! Klik "DAFTAR & CETAK TIKET" untuk uji cetak & unduh PDF.', 'info');
+      });
+
+      function setSubmitLoading(loading) {
+        if (isQuotaFull) return;
+        submitBtn.disabled = loading;
+        if (loading) {
+          submitBtnText.textContent = 'MENYIMPAN KE SPREADSHEET...';
+          submitBtnArrow.classList.add('hidden');
+          submitBtnSpinner.classList.remove('hidden');
+        } else {
+          submitBtnText.textContent = 'DAFTAR & CETAK TIKET';
+          submitBtnArrow.classList.remove('hidden');
+          submitBtnSpinner.classList.add('hidden');
+        }
+      }
+
+      /* ===================================================================
+         7. SUBTLE PIXEL CONFETTI CELEBRATION
+      =================================================================== */
+      function launchPixelConfetti() {
+        if (confettiAnimId) cancelAnimationFrame(confettiAnimId);
+
+        const ctx = confettiCanvas.getContext('2d');
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = window.innerWidth;
+        const h = window.innerHeight;
+        confettiCanvas.width = w * dpr;
+        confettiCanvas.height = h * dpr;
+        ctx.scale(dpr, dpr);
+
+        const palette = ['#4285F4', '#EA4335', '#FBBC05', '#34A853', '#8B5CF6', '#EC4899', '#FFFFFF'];
+        const total = w < 640 ? 48 : 76;
+        const particles = [];
+
+        for (let i = 0; i < total; i++) {
+          const leftSide = i % 2 === 0;
+          particles.push({
+            x: leftSide ? w * 0.3 + (Math.random() - 0.5) * 120 : w * 0.7 + (Math.random() - 0.5) * 120,
+            y: h * 0.16 + (Math.random() - 0.5) * 60,
+            vx: (Math.random() - 0.5) * 9.5,
+            vy: -Math.random() * 8 - 2.5,
+            size: Math.floor(Math.random() * 5) + 5,
+            color: palette[Math.floor(Math.random() * palette.length)],
+            rot: Math.random() * Math.PI * 2,
+            vRot: (Math.random() - 0.5) * 0.22,
+            life: 1,
+            decay: 0.009 + Math.random() * 0.008,
+          });
+        }
+
+        function tick() {
+          ctx.clearRect(0, 0, w, h);
+          let alive = 0;
+          for (const p of particles) {
+            if (p.life <= 0) continue;
+            alive++;
+            p.x += p.vx;
+            p.y += p.vy;
+            p.vy += 0.24;
+            p.vx *= 0.99;
+            p.rot += p.vRot;
+            p.life -= p.decay;
+
+            ctx.save();
+            ctx.globalAlpha = Math.max(0, p.life);
+            ctx.translate(p.x, p.y);
+            ctx.rotate(p.rot);
+            ctx.fillStyle = p.color;
+            ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.strokeStyle = '#1e1b4b';
+            ctx.lineWidth = 1.2;
+            ctx.strokeRect(-p.size / 2, -p.size / 2, p.size, p.size);
+            ctx.restore();
+          }
+
+          if (alive > 0) {
+            confettiAnimId = requestAnimationFrame(tick);
+          } else {
+            ctx.clearRect(0, 0, w, h);
+            confettiAnimId = null;
+          }
+        }
+        tick();
+      }
+
+      /* ===================================================================
+         8. ULTRA-SMOOTH 3-PHASE LAYERED TICKET PRINTER DISPENSER
+      =================================================================== */
+      function populateTicket(data) {
+        const waLink = data.waGroupLink || DEFAULT_WA_GROUP_LINK;
+        document.getElementById('t-id-main').textContent = data.ticketId;
+        document.getElementById('t-id-stub').textContent = data.ticketId;
+        document.getElementById('t-nama').textContent = data.nama;
+        document.getElementById('t-email').textContent = data.email;
+        document.getElementById('t-whatsapp').textContent = data.whatsapp;
+        document.getElementById('t-jurusan-sem').textContent = `${data.jurusan} • ${data.semester}`;
+        document.getElementById('t-univ').textContent = data.universitas;
+
+        // Bind WhatsApp Group invite links on both ticket stub and modal action bar
+        ticketWaLink.href = waLink;
+        modalWaGroupBtn.href = waLink;
+
+        // Show email confirmation feedback if returned by Apps Script
+        if (data.emailSent) {
+          emailSentHint.textContent = `✓ Data tersimpan di Spreadsheet & E-Tiket terkirim ke ${data.email}`;
+          emailSentHint.classList.remove('hidden');
+        } else if (data.savedToSheet) {
+          emailSentHint.textContent = '✓ Data resmi tersimpan di Spreadsheet pendaftaran!';
+          emailSentHint.classList.remove('hidden');
+        } else {
+          emailSentHint.classList.add('hidden');
+        }
+
+        // Build exact verified QR payload, render real QR & real Code 128B barcode
+        const qrPayload = buildVerifiedQrPayload(data);
+        qrPayloadText.textContent = qrPayload;
+        qrPayloadPanel.classList.add('hidden');
+        toggleQrPayloadBtn.textContent = '🔍 Cek Isi QR';
+
+        renderModalBarcode(data.ticketId);
+        renderModalQr(qrPayload);
+      }
+
+      function clearCuttingVisuals() {
+        if (cutRafId) {
+          cancelAnimationFrame(cutRafId);
+          cutRafId = null;
+        }
+        isCutting = false;
+        isTorn = false;
+
+        ticketPrintable.classList.remove('ticket-is-torn');
+        ticketTop.classList.remove('ticket-top-recoil');
+        pdfStampBadge.classList.remove('stamp-visible');
+        ticketPrintable.style.transform = '';
+        // Reset GPU-animated beam & scissors cleanly
+        cutLaserTrail.style.opacity = '0';
+        cutLaserTrail.style.transform = 'scaleX(0)';
+        scissorsRunner.style.opacity = '0';
+        scissorsRunner.style.transform = 'translate3d(-24px, 0, 0) scale(0.85)';
+
+        // Clear sparks overlay canvas
+        const sctx = cutSparksCanvas.getContext('2d');
+        sctx.clearRect(0, 0, cutSparksCanvas.width, cutSparksCanvas.height);
+
+        // Restore action buttons to pre-cut state
+        downloadPdfBtn.disabled = false;
+        downloadPdfBtn.classList.remove('hidden');
+        downloadPdfBtn.classList.add('flex');
+        downloadPdfLabel.textContent = 'DOWNLOAD TIKET PDF';
+
+        directDownloadLink.classList.add('hidden');
+        directDownloadLink.classList.remove('flex');
+        resetCutBtn.classList.add('hidden');
+        resetCutBtn.classList.remove('flex');
+      }
+
+      async function runSmoothPrinterExtrusion({ withRetract = false } = {}) {
+        const myToken = ++printSequenceToken;
+        isPrinting = true;
+        replayPrintBtn.disabled = true;
+        downloadPdfBtn.disabled = true;
+
+        modalActionBar.classList.remove('action-bar-visible');
+        modalActionBar.classList.add('action-bar-hidden');
+
+        if (withRetract) {
+          ticketExtruder.classList.remove('is-extruding', 'is-extruded');
+          ticketExtruder.classList.add('is-retracting');
+          await sleep(410);
+          if (myToken !== printSequenceToken) return;
+        }
+
+        clearCuttingVisuals();
+        ticketExtruder.classList.remove('is-extruding', 'is-extruded', 'is-retracting');
+        ticketSheenBeam.classList.remove('sheen-sweep-active');
+        void ticketExtruder.offsetWidth;
+
+        // PHASE 1: WARMING UP
+        printerHousing.classList.add('printer-humming');
+        printerLamps.classList.add('printer-printing-lamps');
+        slotNeonBar.classList.add('slot-neon-active');
+        slotNeonCore.classList.add('slot-neon-active');
+
+        printerLed.className = 'w-3 h-3 rounded-sm border-2 border-[#090d1f] led-warming shrink-0';
+        printerStatus.className = 'font-mono font-bold text-[11px] sm:text-xs text-sky-300 tracking-wider truncate';
+        printerStatus.textContent = 'STATUS: WARMING UP...';
+
+        await sleep(260);
+        if (myToken !== printSequenceToken) return;
+
+        // PHASE 2: PRINTING PASS (60fps GPU translate3d)
+        printerLed.className = 'w-3 h-3 rounded-sm border-2 border-[#090d1f] led-printing shrink-0';
+        printerStatus.className = 'font-mono font-bold text-[11px] sm:text-xs text-amber-300 tracking-wider truncate';
+        printerStatus.textContent = 'STATUS: PRINTING PASS...';
+
+        ticketExtruder.classList.add('is-extruding');
+
+        await sleep(1720);
+        if (myToken !== printSequenceToken) return;
+
+        // PHASE 3: PASS READY + HOLO SHEEN + CONFETTI
+        ticketExtruder.classList.remove('is-extruding');
+        ticketExtruder.classList.add('is-extruded');
+
+        printerHousing.classList.remove('printer-humming');
+        printerLamps.classList.remove('printer-printing-lamps');
+        slotNeonBar.classList.remove('slot-neon-active');
+        slotNeonCore.classList.remove('slot-neon-active');
+
+        printerLed.className = 'w-3 h-3 rounded-sm border-2 border-[#090d1f] led-ready shrink-0';
+        printerStatus.className = 'font-mono font-bold text-[11px] sm:text-xs text-emerald-300 tracking-wider truncate';
+        printerStatus.textContent = 'STATUS: PASS READY!';
+
+        void ticketSheenBeam.offsetWidth;
+        ticketSheenBeam.classList.add('sheen-sweep-active');
+
+        playRetroSound('ready');
+        launchPixelConfetti();
+
+        isPrinting = false;
+        replayPrintBtn.disabled = false;
+        downloadPdfBtn.disabled = false;
+        modalActionBar.classList.remove('action-bar-hidden');
+        modalActionBar.classList.add('action-bar-visible');
+      }
+
+      function openTicketModal(participant) {
+        currentParticipant = participant;
+        populateTicket(participant);
+
+        // Pre-generate Official E-Ticket PDF in background right away!
+        preparedPdfPromise = pregenerateOfficialTicketPdf(participant).catch((err) => {
+          console.error('Background PDF pre-generation error:', err);
+          return null;
+        });
+
+        modal.classList.remove('hidden');
+        modal.classList.add('flex', 'modal-backdrop-enter');
+        modalStage.classList.add('modal-stage-enter');
+        modal.scrollTop = 0;
+        document.body.style.overflow = 'hidden';
+
+        runSmoothPrinterExtrusion({ withRetract: false });
+      }
+
+      function closeTicketModal() {
+        if (isCutting) return;
+        printSequenceToken++;
+        isPrinting = false;
+        printerHousing.classList.remove('printer-humming');
+        printerLamps.classList.remove('printer-printing-lamps');
+        slotNeonBar.classList.remove('slot-neon-active');
+        slotNeonCore.classList.remove('slot-neon-active');
+
+        modal.classList.add('hidden');
+        modal.classList.remove('flex', 'modal-backdrop-enter');
+        modalStage.classList.remove('modal-stage-enter');
+        document.body.style.overflow = '';
+      }
+
+      /* ===================================================================
+         9. BUTTERY-SMOOTH 60FPS rAF TICKET CUTTING & CANVAS SPARKS ENGINE
+            (Zero DOM reflow, zero html2canvas stutter, GPU-composited only!)
+      =================================================================== */
+      function easeInOutCubic(t) {
+        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function run60fpsCutAnimation() {
+        return new Promise((resolve) => {
+          const perfRect = ticketPerforation.getBoundingClientRect();
+          const cutWidth = perfRect.width;
+
+          // Configure HiDPI overlay canvas for pixel sparks
+          const dpr = Math.min(window.devicePixelRatio || 1, 2);
+          const padX = 28;
+          const canvasW = cutWidth + padX * 2;
+          const canvasH = 116;
+          cutSparksCanvas.width = Math.round(canvasW * dpr);
+          cutSparksCanvas.height = Math.round(canvasH * dpr);
+          const ctx = cutSparksCanvas.getContext('2d');
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+          const sparkColors = ['#FFFFFF', '#FBBF24', '#EC4899', '#8B5CF6', '#4285F4', '#34A853'];
+          const sparks = [];
+
+          const CUT_DURATION = 780; // ms for smooth scissors glide 0% -> 100%
+          const TOTAL_DURATION = 960; // ms including beam fade & sparks dissipation
+          let startTime = null;
+          let lastSpawnX = -10;
+          let splitTriggered = false;
+
+          playRetroSound('tear');
+
+          function frame(now) {
+            if (startTime === null) startTime = now;
+            const elapsed = now - startTime;
+            const cutT = Math.min(elapsed / CUT_DURATION, 1);
+            const eased = easeInOutCubic(cutT);
+
+            // 1. Update Scissors Position (pure GPU translate3d + smooth snip oscillation)
+            const xPx = -12 + eased * (cutWidth + 24);
+            const snipAngle = Math.sin(cutT * Math.PI * 10) * 9;
+            const scissorOpacity = cutT < 0.08 ? cutT / 0.08 : cutT > 0.9 ? Math.max(0, (1 - cutT) / 0.1) : 1;
+            const scissorScale = cutT < 0.1 ? 0.85 + 0.2 * (cutT / 0.1) : 1.05;
+
+            scissorsRunner.style.opacity = scissorOpacity.toFixed(3);
+            scissorsRunner.style.transform = `translate3d(${xPx.toFixed(2)}px, 0, 0) scale(${scissorScale.toFixed(3)}) rotate(${snipAngle.toFixed(2)}deg)`;
+
+            // 2. Update Glowing Gemini Multi-Color Cut Beam (pure GPU scaleX)
+            const beamOpacity = cutT < 1 ? 1 : Math.max(0, 1 - (elapsed - CUT_DURATION) / 170);
+            cutLaserTrail.style.opacity = beamOpacity.toFixed(3);
+            cutLaserTrail.style.transform = `scaleX(${eased.toFixed(4)})`;
+
+            // 3. Spawn Crisp Pixel Sparks onto Overlay Canvas (zero DOM elements!)
+            if (cutT > 0.03 && cutT < 0.97 && xPx - lastSpawnX >= 10) {
+              lastSpawnX = xPx;
+              for (let k = 0; k < 2; k++) {
+                sparks.push({
+                  x: xPx + padX + (Math.random() - 0.5) * 6,
+                  y: canvasH / 2 + (Math.random() - 0.5) * 4,
+                  vx: -1.4 - Math.random() * 2.2,
+                  vy: (Math.random() - 0.5) * 5.2,
+                  size: Math.random() > 0.45 ? 5 : 4,
+                  color: sparkColors[Math.floor(Math.random() * sparkColors.length)],
+                  life: 1,
+                  decay: 0.036 + Math.random() * 0.025,
+                });
+              }
+            }
+
+            // 4. Draw & Step Overlay Canvas Sparks
+            ctx.clearRect(0, 0, canvasW, canvasH);
+            for (let i = sparks.length - 1; i >= 0; i--) {
+              const p = sparks[i];
+              p.x += p.vx;
+              p.y += p.vy;
+              p.vy += 0.16;
+              p.life -= p.decay;
+              if (p.life <= 0) {
+                sparks.splice(i, 1);
+                continue;
+              }
+              ctx.globalAlpha = p.life;
+              ctx.fillStyle = p.color;
+              ctx.fillRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+              ctx.strokeStyle = '#1e1b4b';
+              ctx.lineWidth = 1;
+              ctx.strokeRect(p.x - p.size / 2, p.y - p.size / 2, p.size, p.size);
+            }
+            ctx.globalAlpha = 1;
+
+            // 5. Trigger Clean Ticket Split + Tactile Top Recoil right at ~800ms
+            if (!splitTriggered && elapsed >= 800) {
+              splitTriggered = true;
+              ticketPrintable.classList.add('ticket-is-torn');
+              ticketTop.classList.remove('ticket-top-recoil');
+              void ticketTop.offsetWidth;
+              ticketTop.classList.add('ticket-top-recoil');
+              isTorn = true;
+            }
+
+            if (elapsed < TOTAL_DURATION || sparks.length > 0) {
+              cutRafId = requestAnimationFrame(frame);
+            } else {
+              cutRafId = null;
+              ctx.clearRect(0, 0, canvasW, canvasH);
+              cutLaserTrail.style.opacity = '0';
+              scissorsRunner.style.opacity = '0';
+              resolve();
+            }
+          }
+
+          cutRafId = requestAnimationFrame(frame);
+        });
+      }
+
+      async function handleDownloadAndCut() {
+        if (!currentParticipant || isPrinting || isCutting) return;
+
+        isCutting = true;
+        downloadPdfBtn.disabled = true;
+        replayPrintBtn.disabled = true;
+        downloadPdfLabel.textContent = 'MEMOTONG TIKET...';
+
+        printerStatus.className = 'font-mono font-bold text-[11px] sm:text-xs text-pink-300 tracking-wider truncate';
+        printerStatus.textContent = 'STATUS: CUTTING PERFORATION...';
+
+        // Ensure pre-generated PDF is ready (normally already done in background!)
+        if (!preparedPdfUrl && preparedPdfPromise) {
+          await preparedPdfPromise;
+        }
+        if (!preparedPdfUrl) {
+          await pregenerateOfficialTicketPdf(currentParticipant);
+        }
+
+        // Run silky 60fps pure GPU/Canvas cutting animation (~950ms, ZERO heavy CPU work!)
+        await run60fpsCutAnimation();
+
+        // Stamp crisp retro emerald badge on stub corner
+        pdfStampBadge.classList.add('stamp-visible');
+
+        // Immediately trigger real PDF download
+        if (preparedPdfUrl) {
+          try {
+            triggerBlobDownload(preparedPdfUrl, preparedPdfFilename);
+            showToast('E-Tiket PDF berhasil diunduh! Simpan untuk registrasi ulang acara.', 'success');
+          } catch (err) {
+            console.error('Auto-download error:', err);
+            showToast('Klik tombol hijau "UNDUH LAGI PDF" untuk menyimpan file PDF.', 'info');
+          }
+        } else {
+          showToast('Gagal menyiapkan file PDF. Coba klik Cetak Ulang.', 'error');
+        }
+
+        printerStatus.className = 'font-mono font-bold text-[11px] sm:text-xs text-emerald-300 tracking-wider truncate';
+        printerStatus.textContent = 'STATUS: PDF DOWNLOADED ✓';
+
+        // Reveal Direct Anchor Link ("UNDUH LAGI PDF") + "Reset & Potong Ulang"
+        downloadPdfBtn.classList.add('hidden');
+        downloadPdfBtn.classList.remove('flex');
+
+        directDownloadLink.classList.remove('hidden');
+        directDownloadLink.classList.add('flex');
+
+        resetCutBtn.classList.remove('hidden');
+        resetCutBtn.classList.add('flex');
+
+        replayPrintBtn.disabled = false;
+        isCutting = false;
+      }
+
+      /* ===================================================================
+         10. EVENT LISTENERS
+      =================================================================== */
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        showFormServerAlert('');
+
+        if (isQuotaFull) {
+          showToast('Mohon maaf, kuota peserta sudah penuh dan pendaftaran telah ditutup.', 'error');
+          return;
+        }
+
+        let firstInvalid = null;
+        for (const rule of fieldRules) {
+          if (!validateField(rule) && !firstInvalid) {
+            firstInvalid = document.getElementById(rule.id);
+          }
+        }
+        if (firstInvalid) {
+          firstInvalid.focus();
+          showToast('Mohon lengkapi semua kolom pendaftaran dengan benar.', 'error');
+          return;
+        }
+
+        const participant = {
+          ticketId: generateTicketId(),
+          nama: document.getElementById('nama').value.trim(),
+          email: document.getElementById('email').value.trim(),
+          whatsapp: document.getElementById('whatsapp').value.trim(),
+          jurusan: document.getElementById('jurusan').value.trim(),
+          semester: document.getElementById('semester').value,
+          universitas: document.getElementById('universitas').value.trim(),
+          timestamp: new Date().toISOString(),
+          waGroupLink: DEFAULT_WA_GROUP_LINK,
+          emailSent: false,
+          savedToSheet: false,
+        };
+
+        setSubmitLoading(true);
+        try {
+          const result = await sendRegistrationData(participant);
+          setSubmitLoading(false);
+
+          if (!result || result.status !== 'success') {
+            const errMsg = (result && result.message) || 'Pendaftaran gagal diproses oleh server.';
+
+            if (result && result.status === 'full') {
+              applyQuotaUI({ isFull: true });
+            }
+            showFormServerAlert(errMsg);
+            showToast(errMsg, 'error');
+            return;
+          }
+
+          // Sync authoritative ticket code & group link returned by Spreadsheet Apps Script
+          if (result.data) {
+            if (result.data.kodePendaftaran) {
+              participant.ticketId = result.data.kodePendaftaran;
+            }
+            if (result.data.waGroupLink) {
+              participant.waGroupLink = result.data.waGroupLink;
+            }
+            if (typeof result.data.remainingQuota === 'number') {
+              applyQuotaUI({
+                maxQuota: (result.data.totalRegistered || 0) + result.data.remainingQuota,
+                remainingQuota: result.data.remainingQuota,
+                isFull: result.data.remainingQuota <= 0,
+              });
+            }
+          }
+
+          participant.savedToSheet = true;
+          participant.emailSent = Boolean(result.emailSent);
+
+          showToast(
+            participant.emailSent
+              ? 'Berhasil terdaftar! Data masuk Spreadsheet & E-Tiket dikirim ke email kamu.'
+              : 'Data pendaftaran berhasil tersimpan ke Spreadsheet!',
+            'success'
+          );
+
+          openTicketModal(participant);
+        } catch (err) {
+          console.error('Submission error:', err);
+          setSubmitLoading(false);
+          const msg = err && err.message
+            ? `Gagal terhubung ke Spreadsheet: ${err.message}`
+            : 'Gagal terhubung ke Spreadsheet. Cek koneksi internet kamu dan coba lagi.';
+          showFormServerAlert(msg);
+          showToast('Kendala koneksi ke server pendaftaran. Coba submit ulang ya!', 'error');
+        }
+      });
+
+      downloadPdfBtn.addEventListener('click', handleDownloadAndCut);
+
+      copyWaLinkBtn.addEventListener('click', () => {
+        const waUrl = (currentParticipant && currentParticipant.waGroupLink) || DEFAULT_WA_GROUP_LINK;
+        const ok = copyTextToClipboard(waUrl);
+        if (ok) {
+          copyWaLinkBtn.textContent = '✓ Tersalin';
+          showToast('Link Grup WhatsApp berhasil disalin!', 'success');
+          setTimeout(() => {
+            copyWaLinkBtn.textContent = 'Salin';
+          }, 2000);
+        } else {
+          showToast('Silakan langsung klik tombol GABUNG untuk membuka grup WhatsApp.', 'info');
+        }
+      });
+
+      directDownloadLink.addEventListener('click', () => {
+        showToast('Mengunduh E-Tiket PDF resmi...', 'success');
+      });
+
+      resetCutBtn.addEventListener('click', () => {
+        if (isPrinting || isCutting) return;
+        runSmoothPrinterExtrusion({ withRetract: true });
+      });
+
+      toggleQrPayloadBtn.addEventListener('click', () => {
+        const isNowHidden = qrPayloadPanel.classList.toggle('hidden');
+        toggleQrPayloadBtn.textContent = isNowHidden ? '🔍 Cek Isi QR' : '✕ Tutup Isi QR';
+      });
+
+      // Subtle Desktop 3D Tilt Hover Effect on Printed E-Ticket
+      if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+        ticketPrintable.addEventListener('mousemove', (e) => {
+          if (isPrinting || isCutting) return;
+          const rect = ticketPrintable.getBoundingClientRect();
+          const relX = (e.clientX - rect.left) / rect.width - 0.5;
+          const relY = (e.clientY - rect.top) / rect.height - 0.5;
+          const rotY = (relX * 7).toFixed(2);
+          const rotX = (-relY * 5).toFixed(2);
+          ticketPrintable.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg)`;
+        });
+
+        ticketPrintable.addEventListener('mouseleave', () => {
+          ticketPrintable.style.transform = '';
+        });
+      }
+
+      replayPrintBtn.addEventListener('click', () => {
+        if (isPrinting || isCutting) return;
+        runSmoothPrinterExtrusion({ withRetract: true });
+      });
+
+      closeModalX.addEventListener('click', closeTicketModal);
+
+      registerAnotherBtn.addEventListener('click', () => {
+        if (isCutting) return;
+        closeTicketModal();
+        form.reset();
+        document.getElementById('nama').focus();
+        showToast('Form siap untuk peserta berikutnya!', 'info');
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal && !isCutting) closeTicketModal();
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modal.classList.contains('hidden') && !isCutting) {
+          closeTicketModal();
+        }
+      });
+
+      dinoMascot.addEventListener('click', () => {
+        dinoSvg.classList.remove('dino-jumping');
+        void dinoSvg.offsetWidth;
+        dinoSvg.classList.add('dino-jumping');
+        playRetroSound('dino');
+        setTimeout(() => dinoSvg.classList.remove('dino-jumping'), 520);
+      });
+
+      // Sinkronkan sisa kuota peserta dari Spreadsheet saat halaman dibuka
+      fetchQuotaStatus();
+    })();
+  </script>
+</body>
+</html>
