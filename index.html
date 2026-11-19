@@ -3137,10 +3137,10 @@
 
         // Show email confirmation feedback if returned by Apps Script
         if (data.emailSent) {
-          emailSentHint.textContent = `✓ Data tersimpan di Spreadsheet & E-Tiket terkirim ke ${data.email}`;
+          emailSentHint.textContent = `✓ Data tersimpan di Database & E-Tiket terkirim ke ${data.email}`;
           emailSentHint.classList.remove('hidden');
         } else if (data.savedToSheet) {
-          emailSentHint.textContent = '✓ Data resmi tersimpan di Spreadsheet pendaftaran!';
+          emailSentHint.textContent = '✓ Data resmi tersimpan di Database pendaftaran!';
           emailSentHint.classList.remove('hidden');
         } else {
           emailSentHint.classList.add('hidden');
@@ -3542,8 +3542,8 @@
 
           showToast(
             participant.emailSent
-              ? 'Berhasil terdaftar! Data masuk Spreadsheet & E-Tiket dikirim ke email kamu.'
-              : 'Data pendaftaran berhasil tersimpan ke Spreadsheet!',
+              ? 'Berhasil terdaftar! Data masuk Database & E-Tiket dikirim ke email kamu.'
+              : 'Data pendaftaran berhasil tersimpan ke Database!',
             'success'
           );
 
@@ -3552,8 +3552,8 @@
           console.error('Submission error:', err);
           setSubmitLoading(false);
           const msg = err && err.message
-            ? `Gagal terhubung ke Spreadsheet: ${err.message}`
-            : 'Gagal terhubung ke Spreadsheet. Cek koneksi internet kamu dan coba lagi.';
+            ? `Gagal terhubung ke Database: ${err.message}`
+            : 'Gagal terhubung ke Database. Cek koneksi internet kamu dan coba lagi.';
           showFormServerAlert(msg);
           showToast('Kendala koneksi ke server pendaftaran. Coba submit ulang ya!', 'error');
         }
