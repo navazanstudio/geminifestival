@@ -917,7 +917,7 @@
           <!-- Eyebrow Badge + 7 Dimension Pixel Squares -->
           <div class="flex flex-wrap items-center justify-between gap-2 pb-4 border-b-2 border-dashed border-slate-200">
             <span class="font-mono font-bold text-xs sm:text-sm tracking-wider text-ink">
-              GOOGLE STUDENT AMBASSADOR<span class="text-slate-400 mx-1">X</span>HIMAPTIKA
+              GOOGLE STUDENT AMBASSADOR <span class="text-slate-400 mx-1">X</span> HIMAPTIKA
             </span>
             <div class="flex items-center gap-1" title="7 Dimensions of Productivity">
               <span class="w-3 h-3 bg-[#4285F4] border-[1.5px] border-ink inline-block"></span>
@@ -1084,7 +1084,7 @@
         </div>
 
         <div class="p-5 sm:p-7 md:p-8">
-          <!-- Form Header with Quick [Isi Demo] Button -->
+          <!-- Form Header -->
           <div class="flex items-start justify-between gap-3 mb-6">
             <div>
               <span class="inline-block font-mono text-[11px] font-bold uppercase tracking-widest px-2.5 py-0.5 bg-blue-50 border-2 border-ink rounded mb-2 text-googleBlue">
@@ -1097,7 +1097,6 @@
                 Lengkapi data dirimu untuk langsung mencetak E-Tiket &amp; Bukti Pendaftaran Resmi (PDF).
               </p>
             </div>
-            
           </div>
 
           <!-- Registration Form (Exact 6 Fields) -->
@@ -1772,7 +1771,6 @@
       const submitBtnText = document.getElementById('submit-btn-text');
       const submitBtnArrow = document.getElementById('submit-btn-arrow');
       const submitBtnSpinner = document.getElementById('submit-btn-spinner');
-      const demoFillBtn = document.getElementById('demo-fill-btn');
       const formServerAlert = document.getElementById('form-server-alert');
 
       const headerQuotaBadge = document.getElementById('header-quota-badge');
@@ -2972,7 +2970,7 @@
       }
 
       /* ===================================================================
-         6. FORM VALIDATION & [ISI DEMO] HELPER
+         6. FORM VALIDATION
       =================================================================== */
       const fieldRules = [
         {
@@ -3035,20 +3033,6 @@
 
       document.getElementById('whatsapp').addEventListener('input', function () {
         this.value = this.value.replace(/[^0-9+\-\s]/g, '');
-      });
-
-      demoFillBtn.addEventListener('click', () => {
-        document.getElementById('nama').value = 'Fauzan Putra Afandi';
-        document.getElementById('email').value = 'fznptr15@gmail.com';
-        document.getElementById('whatsapp').value = '08888017484';
-        document.getElementById('jurusan').value = 'Sistem Informasi';
-        document.getElementById('semester').value = 'Semester 5';
-        document.getElementById('universitas').value = 'Universitas Terbuka';
-        fieldRules.forEach((r) => {
-          document.getElementById(r.id).classList.remove('input-error');
-          document.getElementById(`err-${r.id}`).classList.add('hidden');
-        });
-        showToast('Data demo terisi! Klik "DAFTAR & CETAK TIKET" untuk uji cetak & unduh PDF.', 'info');
       });
 
       function setSubmitLoading(loading) {
